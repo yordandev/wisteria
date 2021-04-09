@@ -29,7 +29,7 @@ const authenticateToken = (req, res, next) => {
         error: "You need to be authenticated",
       });
     }
-    request.token = token;
+    req.token = token;
     next();
   });
 };
@@ -86,7 +86,7 @@ app.post("/products", (req, res) => {
   );
 });
 
-//registering only if email is unique NOT FINISHED
+//registering only if email is unique
 app.post("/signup", async (req, res) => {
   const myPlaintextPassword = req.body.password;
   console.log(myPlaintextPassword);
@@ -118,6 +118,7 @@ app.post("/signup", async (req, res) => {
               id: results.insertId,
             };
             const genToken = generateAccessToken(tokenData);
+            req.userId = results.insertId;
             res.status(201).json({
               message: "You successfully registered!",
               id: results.insertId,
@@ -157,6 +158,7 @@ app.post("/login", async (req, res, next) => {
               id: results.id,
             };
             const genToken = generateAccessToken(tokenData);
+            req.userId = results.id;
             res.status(200).json({
               message: "You are now logged in!",
               user: results,
@@ -173,7 +175,29 @@ app.post("/login", async (req, res, next) => {
   );
 });
 
-//users endpoint, getting all users NOT FINISHED
+app.patch("/users/:id", authenticateToken, (req, res) => {
+  const values = [req.body.password, req.userId];
+  if (req.body.password == null || " ") {
+    res.status(400).json({
+      error: "You need to enter a new password!",
+    });
+  } else {
+    db.query(
+      "UPDATE users SET password = ? WHERE id = ?",
+      values,
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.status(200).json({
+          message: "You successfully updated your password.",
+        });
+      }
+    );
+  }
+});
+
+/*users endpoint, getting all users NOT FINISHED
 app.get("/users", (req, res) => {
   db.query(
     "SELECT id, email, userType FROM user",
@@ -185,7 +209,7 @@ app.get("/users", (req, res) => {
       res.json(results);
     }
   );
-});
+});*/
 
 app.get("/purchases", (req, res) => {
   db.query("SELECT * FROM purchase", function (error, results, fields) {
