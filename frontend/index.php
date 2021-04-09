@@ -9,12 +9,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="./css/layout.css">
+    <link rel="stylesheet" type="text/css" href="./components/header/header.css">
+    <link rel="stylesheet" type="text/css" href="./components/menu/menu.css">
+    <link rel="stylesheet" type="text/css" href="./components/footer/footer.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <script src="./js/menu.js"></script>
     <title>Wisteria E-Commerce</title>
 </head>
 
 <body>
-    <h1>bye</h1>
+    <div class="grid-container">
+        <?php
+        include('./components/header/header.php')
+        ?>
+        <div class="content-container">
+            <?php
+            include('./components/menu/menu.php')
+            ?>
+        </div>
+        <?php
+        include('./components/footer/footer.php')
+        ?>
+    </div>
 </body>
 
 </html>
