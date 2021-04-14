@@ -296,15 +296,36 @@ app.get("/purchases", authenticateToken, (req, res) => {
   });
 });
 
-app.post("/purchases", authenticateToken, (req, res) => {
+app.post("/purchases", authenticateToken, async (req, res) => {
   const value = req.body.total;
-  db.query(
+  await db.query(
     "INSERT INTO purchase(total) VALUES (?)",
     value,
     function (error, results, fields) {
       if (error) {
         console.log(error);
       } else {
+        const userValues = [res.insertId, req.userId];
+        db.query(
+          "INSERT INTO purchaseUser(purchaseId, userId) VALUES (?, ?)",
+          userValues,
+          function (error, results, fields) {
+            if (error) {
+              console.log(error);
+            }
+          }
+        );
+        let i;
+        for(i=0; i<req.body.products.length; i++) {
+          const productValues = [res.insertId, req.body.products[i]];
+          await db.query("INSERT INTO purchaseProduct(purchaseId, productId) VALUES (?,?)",
+          productValues,
+          function (error, results, fields) {
+            if (error) {
+              console.log(error);
+            }
+          })
+        }
         res.status(201).json({
           message: "Your purchase was successfully made!",
         });
