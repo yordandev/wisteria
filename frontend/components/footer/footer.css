@@ -1,0 +1,28 @@
+.footer-container {
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid lightgray;
+}
+
+.footer-container footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.footer-container footer ul li {
+  margin: 40px 120px 120px 120px;
+}
+
+.footer-container footer ul li a {
+  color: black;
+  text-decoration: none;
+  padding: 20px 10px;
+}
+
+.footer-container footer ul li a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=footer.css.map */
