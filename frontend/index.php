@@ -16,8 +16,10 @@
     <link rel="stylesheet" type="text/css" href="./components/header/header.css">
     <link rel="stylesheet" type="text/css" href="./components/menu/menu.css">
     <link rel="stylesheet" type="text/css" href="./components/footer/footer.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo "/css/" . $desired_page . ".css"; ?>">
-    <script src="./js/menu.js" />
+    <link rel="stylesheet" type="text/css" href="<?php echo './css/' . $desired_page . '.css'; ?>">
+
+
+    <script src="./js/menu.js"></script>
     <title>Wisteria || <?php echo ucfirst($desired_page); ?> </title>
 
 </head>
