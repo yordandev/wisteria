@@ -45,10 +45,14 @@
             </div>
         </li>
         <li>
-            Contact
+            <a href="#">
+                Contact
+            </a>
         </li>
         <li>
-            About
+            <a href="/?page=about">
+                About
+            </a>
         </li>
     </ul>
 </nav>

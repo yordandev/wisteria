@@ -15,6 +15,11 @@
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <script src="./js/menu.js"></script>
     <title>Wisteria E-Commerce</title>
+    <?php
+    $url = rawurldecode($_SERVER['REQUEST_URI']);
+    $desired_page = (isset($_REQUEST['page'])) ?
+        $_REQUEST['page'] : 'home';
+    ?>
 </head>
 
 <body>
@@ -26,6 +31,12 @@
             <?php
             include('./components/menu/menu.php')
             ?>
+            <div class="content">
+                <?php
+                /*Includes specific page content*/
+                include("pages/" . $desired_page . ".php");
+                ?>
+            </div>
         </div>
         <?php
         include('./components/footer/footer.php')
