@@ -1,37 +1,54 @@
 <nav class="menu">
     <ul>
-        <div class="container">
-            <p class="title">Do you accept online payements?<span>+</span></p>
-            <p class="content">Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit....</p>
-            <p class="title">Do you have a return policy?<span>+</span></p>
-            <p class="content">Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit....</p>
-            <p class="title">What is the average delivery time?<span>+</span></p>
-            <p class="content">Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit....</p>
-        </div>
-    </ul>
-    <ul>
-        <div class="container">
-            <p class="title">Do you accept online payements?<span>+</span></p>
-            <p class="content">Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit....</p>
-            <p class="title">Do you have a return policy?<span>+</span></p>
-            <p class="content">Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit....</p>
-            <p class="title">What is the average delivery time?<span>+</span></p>
-            <p class="content">Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit....</p>
-        </div>
-    </ul>
-    <ul>
-        Unisex
-    </ul>
-    <ul>
-        Contact
-    </ul>
-    <ul>
-        About
+        <li>
+            <button type="button" class="collapsible">Women</button>
+            <div class="content-menu">
+                <ul>
+                    <li>
+                        <a href="#">All</a>
+                        <a href="#">Tops</a>
+                        <a href="#">Pants/Shorts</a>
+                        <a href="#">Dress/Skirt</a>
+                        <a href="#">Outerwear</a>
+                        <a href="#">Accessories</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button type="button" class="collapsible">Men</button>
+            <div class="content-menu">
+                <ul>
+                    <li>
+                        <a href="#">All</a>
+                        <a href="#">Tops</a>
+                        <a href="#">Pants/Shorts</a>
+                        <a href="#">Outerwear</a>
+                        <a href="#">Accessories</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button type="button" class="collapsible">Unisex</button>
+            <div class="content-menu">
+                <ul>
+                    <li>
+                        <a href="#">All</a>
+                        <a href="#">Tops</a>
+                        <a href="#">Pants/Shorts</a>
+                        <a href="#">Dress/Skirt</a>
+                        <a href="#">Outerwear</a>
+                        <a href="#">Accessories</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            Contact
+        </li>
+        <li>
+            About
+        </li>
     </ul>
 </nav>
