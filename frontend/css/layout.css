@@ -123,7 +123,7 @@ ul {
       grid-template-columns: 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 4fr 1fr;
       grid-template-rows: 1fr 4fr 1fr;
-  gap: 0px 0px;
+  gap: 0px 20px;
       grid-template-areas: 'header-container header-container header-container header-container' 'content-container content-container content-container content-container' 'footer-container footer-container footer-container footer-container';
 }
 
@@ -147,7 +147,7 @@ ul {
       grid-template-columns: 1fr 4fr;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  gap: 0px 0px;
+  gap: 0px 40px;
       grid-template-areas: 'menu content';
 }
 

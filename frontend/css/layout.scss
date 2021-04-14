@@ -121,7 +121,7 @@ ul {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 4fr 1fr;
-	gap: 0px 0px;
+	gap: 0px 20px;
 	grid-template-areas:
 		'header-container header-container header-container header-container'
 		'content-container content-container content-container content-container'
@@ -140,7 +140,7 @@ ul {
 	display: grid;
 	grid-template-columns: 1fr 4fr;
 	grid-template-rows: 1fr;
-	gap: 0px 0px;
+	gap: 0px 40px;
 	grid-template-areas: 'menu content';
 
 	.menu {

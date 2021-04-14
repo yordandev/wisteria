@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <?php
+    $desired_page = (isset($_REQUEST['page'])) ?
+        $_REQUEST['page'] : 'home';
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,14 +16,10 @@
     <link rel="stylesheet" type="text/css" href="./components/header/header.css">
     <link rel="stylesheet" type="text/css" href="./components/menu/menu.css">
     <link rel="stylesheet" type="text/css" href="./components/footer/footer.css">
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
-    <script src="./js/menu.js"></script>
-    <title>Wisteria E-Commerce</title>
-    <?php
-    $url = rawurldecode($_SERVER['REQUEST_URI']);
-    $desired_page = (isset($_REQUEST['page'])) ?
-        $_REQUEST['page'] : 'home';
-    ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo "/css/" . $desired_page . ".css"; ?>">
+    <script src="./js/menu.js" />
+    <title>Wisteria || <?php echo ucfirst($desired_page); ?> </title>
+
 </head>
 
 <body>
@@ -33,7 +33,6 @@
             ?>
             <div class="content">
                 <?php
-                /*Includes specific page content*/
                 include("pages/" . $desired_page . ".php");
                 ?>
             </div>
