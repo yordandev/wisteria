@@ -1,3 +1,16 @@
 <div>
-    <h1>About</h1>
+    <?php
+    echo_card("Denis");
+    echo_card("Denis");
+
+
+    echo_card("Denis");
+
+    echo_card("Denis");
+    echo_card("Denis");
+    echo_card("Denis");
+    echo_card("Denis");
+    echo_card("Denis");
+
+    ?>
 </div>

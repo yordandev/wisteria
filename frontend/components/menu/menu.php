@@ -45,7 +45,7 @@
             </div>
         </li>
         <li>
-            <a href="#">
+            <a href="/?page=contact">
                 Contact
             </a>
         </li>
