@@ -297,16 +297,14 @@ app.get("/purchases", authenticateToken, (req, res) => {
 });
 
 app.post("/purchases", authenticateToken, async (req, res) => {
-  const value = req.body.total;
   await db.query(
-    "INSERT INTO purchase(total) VALUES (?)",
-    value,
-    function (error, results, fields) {
+    "INSERT INTO purchase(status) VALUES (1)",
+    async function (error, results, fields) {
       if (error) {
         console.log(error);
       } else {
-        const userValues = [res.insertId, req.userId];
-        db.query(
+        const userValues = [results.insertId, req.userId];
+        await db.query(
           "INSERT INTO purchaseUser(purchaseId, userId) VALUES (?, ?)",
           userValues,
           function (error, results, fields) {
@@ -316,19 +314,43 @@ app.post("/purchases", authenticateToken, async (req, res) => {
           }
         );
         let i;
-        for(i=0; i<req.body.products.length; i++) {
-          const productValues = [res.insertId, req.body.products[i]];
-          await db.query("INSERT INTO purchaseProduct(purchaseId, productId) VALUES (?,?)",
-          productValues,
+        for (i = 0; i < req.body.products.length; i++) {
+          const productValues = [results.insertId, req.body.products[i]];
+          await db.query(
+            "INSERT INTO purchaseProduct(purchaseId, productId) VALUES (?,?)",
+            productValues,
+            function (error, results, fields) {
+              if (error) {
+                console.log(error);
+              }
+            }
+          );
+        }
+        const purchaseValue = [results.insertId, results.insertId];
+        await db.query(
+          `UPDATE
+        purchase
+    SET
+        purchase.total =(
+        SELECT
+            SUM(product.price)
+        FROM
+            purchaseProduct
+        INNER JOIN product ON purchaseProduct.productId = product.id
+        WHERE
+            purchaseProduct.purchaseId = ?
+    ) WHERE purchase.id = ?;`,
+          purchaseValue,
           function (error, results, fields) {
             if (error) {
               console.log(error);
+            } else {
+              res.status(201).json({
+                message: "Your purchase was successfully made!",
+              });
             }
-          })
-        }
-        res.status(201).json({
-          message: "Your purchase was successfully made!",
-        });
+          }
+        );
       }
     }
   );
