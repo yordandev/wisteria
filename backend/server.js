@@ -169,26 +169,47 @@ app.patch("/users/:id", authenticateToken, (req, res) => {
   }
 });
 
-/*app.delete("users/:id", authenticateToken, (req, res) => {
-  db.query(
-    "DELETE FROM user WHERE id = ?"
-    
-  )
-});*/
-
-/*users endpoint, getting all users NOT FINISHED
-app.get("/users", (req, res) => {
-  db.query(
-    "SELECT id, email, userType FROM user",
-
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
+app.delete("/users/:id", authenticateToken, (req, res) => {
+  const value = req.params.id;
+  if (value == req.userId) {
+    db.query(
+      "DELETE FROM user WHERE id = ?",
+      value,
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.status(200).json({
+          message: "Your account was deleted.",
+        });
       }
-      res.json(results);
-    }
-  );
-});*/
+    );
+  } else {
+    res.status(401).json({
+      message: "You are unauthorized.",
+    });
+  }
+});
+
+app.get("/users/:id", authenticateToken, (req, res) => {
+  const value = req.params.id;
+  if (value == req.userId) {
+    db.query(
+      "SELECT id, email, userType FROM user WHERE id = ?",
+      value,
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.json(results);
+      }
+    );
+  } else {
+    res.status(401).json({
+      message: "You are unauthorized.",
+    });
+  }
+});
 
 app.get("/products", (req, res) => {
   db.query(
@@ -221,8 +242,7 @@ app.post("/products", (req, res) => {
       if (error) {
         console.log(error);
       }
-      res.json({
-        status: 200,
+      res.status(201).json({
         message: "A new product was successfully added!",
       });
     }
@@ -276,16 +296,47 @@ app.get("/purchases", authenticateToken, (req, res) => {
   });
 });
 
+app.post("/purchases", authenticateToken, (req, res) => {
+  const value = req.body.total;
+  db.query(
+    "INSERT INTO purchase(total) VALUES (?)",
+    value,
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.status(201).json({
+          message: "Your purchase was successfully made!",
+        });
+      }
+    }
+  );
+});
+
 app.get("/brands", (req, res) => {
   db.query("SELECT * FROM brand", function (error, results, fields) {
     if (error) {
       console.log(error);
     }
-    // error will be an Error if one occurred during the query
-    // results will contain the results of the query
-    // fields will contain information about the returned results fields (if any)
     res.json(results);
   });
+});
+
+app.post("/brands", (req, res) => {
+  const value = req.body.name;
+  db.query(
+    "INSERT INTO brand(name) VALUES (?)",
+    value,
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.status(201).json({
+          message: "A brand was successfully added!",
+        });
+      }
+    }
+  );
 });
 
 app.get("/genders", (req, res) => {
@@ -293,9 +344,6 @@ app.get("/genders", (req, res) => {
     if (error) {
       console.log(error);
     }
-    // error will be an Error if one occurred during the query
-    // results will contain the results of the query
-    // fields will contain information about the returned results fields (if any)
     res.json(results);
   });
 });
@@ -305,11 +353,25 @@ app.get("/sizes", (req, res) => {
     if (error) {
       console.log(error);
     }
-    // error will be an Error if one occurred during the query
-    // results will contain the results of the query
-    // fields will contain information about the returned results fields (if any)
     res.json(results);
   });
+});
+
+app.post("/sizes", (req, res) => {
+  const value = req.body.name;
+  db.query(
+    "INSERT INTO size(name) VALUES (?)",
+    value,
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.status(201).json({
+          message: "A brand was successfully added!",
+        });
+      }
+    }
+  );
 });
 
 app.get("/types", (req, res) => {
@@ -317,9 +379,6 @@ app.get("/types", (req, res) => {
     if (error) {
       console.log(error);
     }
-    // error will be an Error if one occurred during the query
-    // results will contain the results of the query
-    // fields will contain information about the returned results fields (if any)
     res.json(results);
   });
 });
