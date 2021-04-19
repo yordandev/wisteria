@@ -1,0 +1,48 @@
+#signUpPage {
+	margin: 0 20%;
+	text-align: center;
+
+	form {
+		display: flex;
+		gap: 8px;
+		flex-direction: column;
+
+		::placeholder {
+			color: black;
+			font-weight: 700;
+		}
+
+		input {
+			width: 50%;
+			margin: 0 auto;
+			border: none;
+			border-bottom: 2px solid black;
+			text-align: center;
+			line-height: 4;
+			font-size: 16px;
+		}
+
+		button {
+			width: 20%;
+			margin: 32px auto 0 auto;
+			border: 1px solid black;
+			background: none;
+			padding: 16px;
+			font-size: 24px;
+			font-weight: 900;
+			cursor: pointer;
+
+			&:hover {
+				color: #aeaeae;
+			}
+		}
+	}
+
+	p {
+		margin-top: 24px;
+		a {
+			font-weight: bold;
+			text-decoration: underline;
+		}
+	}
+}

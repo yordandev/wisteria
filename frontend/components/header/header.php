@@ -7,10 +7,10 @@
         </a>
         <ul id="menu">
             <li>
-                <a href="../../account">Account</a>
+                <a href="/?page=account">Account</a>
             </li>
             <li>
-                <a href="../../">Cart</a>
+                <a href="/?page=cart">Cart</a>
             </li>
         </ul>
     </nav>

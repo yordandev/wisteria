@@ -135,7 +135,6 @@ ul {
 
 .content-container {
 	margin: 40px 120px;
-
 	grid-area: content-container;
 	display: grid;
 	grid-template-columns: 1fr 4fr;
@@ -146,6 +145,19 @@ ul {
 	.menu {
 		grid-area: menu;
 	}
+
+	.content {
+		grid-area: content;
+	}
+}
+
+.content-container-no-menu {
+	margin: 40px 120px;
+	grid-area: content-container;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: 'content';
 
 	.content {
 		grid-area: content;

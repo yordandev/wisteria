@@ -1,0 +1,90 @@
+#cartPage {
+  margin: 0 20%;
+  text-align: left;
+}
+
+#cartPage h1 {
+  font-size: 32px;
+  margin-bottom: 32px;
+  font-weight: bold;
+}
+
+#cartPage ul li {
+  margin-bottom: 24px;
+}
+
+#cartPage ul li div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#cartPage ul li div figure {
+  margin-right: 16px;
+}
+
+#cartPage ul li div figure img {
+  width: 200px;
+  height: 300px;
+}
+
+#cartPage ul li div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+
+#cartPage ul li div div h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#cartPage ul li div a {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  text-align: right;
+  margin: auto 0;
+  text-decoration: underline;
+}
+
+#cartPage .total {
+  border-top: 2px solid black;
+  padding-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#cartPage .total p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#cartPage .total p:last-child {
+  text-align: right;
+}
+
+#cartPage button {
+  display: block;
+  margin: 32px auto 0 auto;
+  border: 1px solid black;
+  background: none;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+#cartPage button:hover {
+  color: #aeaeae;
+}
+/*# sourceMappingURL=cart.css.map */

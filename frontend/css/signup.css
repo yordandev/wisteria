@@ -1,0 +1,70 @@
+#signUpPage {
+  margin: 0 20%;
+  text-align: center;
+}
+
+#signUpPage form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#signUpPage form ::-webkit-input-placeholder {
+  color: black;
+  font-weight: 700;
+}
+
+#signUpPage form :-ms-input-placeholder {
+  color: black;
+  font-weight: 700;
+}
+
+#signUpPage form ::-ms-input-placeholder {
+  color: black;
+  font-weight: 700;
+}
+
+#signUpPage form ::placeholder {
+  color: black;
+  font-weight: 700;
+}
+
+#signUpPage form input {
+  width: 50%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 2px solid black;
+  text-align: center;
+  line-height: 4;
+  font-size: 16px;
+}
+
+#signUpPage form button {
+  width: 20%;
+  margin: 32px auto 0 auto;
+  border: 1px solid black;
+  background: none;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+#signUpPage form button:hover {
+  color: #aeaeae;
+}
+
+#signUpPage p {
+  margin-top: 24px;
+}
+
+#signUpPage p a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=signup.css.map */
