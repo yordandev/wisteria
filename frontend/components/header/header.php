@@ -7,6 +7,9 @@
         </a>
         <ul id="menu">
             <li>
+                <a href="/?page=admin">Admin</a>
+            </li>
+            <li>
                 <a href="/?page=account">Account</a>
             </li>
             <li>

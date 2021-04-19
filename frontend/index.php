@@ -11,7 +11,7 @@
     $isLoggedIn = false;
     $cartItems = [1, 2, 3];
 
-    if ($pageName == 'signup' || $pageName == 'login' || $pageName == 'cart' || $pageName == 'checkout') {
+    if ($pageName == 'signup' || $pageName == 'login' || $pageName == 'cart' || $pageName == 'checkout' || $pageName == 'admin') {
         $menuVisible = false;
     }
 
