@@ -120,7 +120,7 @@ ul {
 .grid-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 4fr 1fr;
+	grid-template-rows: 0.5fr 4fr 0.5fr;
 	gap: 0px 20px;
 	grid-template-areas:
 		'header-container header-container header-container header-container'
@@ -156,7 +156,7 @@ ul {
 	grid-area: content-container;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;
+	grid-template-rows: 4fr;
 	grid-template-areas: 'content';
 
 	.content {
