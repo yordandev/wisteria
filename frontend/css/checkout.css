@@ -8,6 +8,7 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  margin-right: 64px;
 }
 
 #checkoutPage .orderInfo [type='radio'] {
@@ -33,6 +34,99 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+#checkoutPage .orderInfo .shippingInfo h1 {
+  font-size: 32px;
+  margin-bottom: 32px;
+  font-weight: bold;
+}
+
+#checkoutPage .orderInfo .shippingInfo input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: left;
+  line-height: 2;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 24px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input::-webkit-input-placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input:-ms-input-placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input::-ms-input-placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input::placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input:focus::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input:focus:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input:focus::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .shippingInfo input:focus::placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#checkoutPage .orderInfo .paymentInfo h2 {
+  font-size: 32px;
+  margin-top: 64px;
+  margin-bottom: 32px;
+  font-weight: bold;
+}
+
+#checkoutPage .orderInfo .paymentInfo label img {
+  height: 150px;
+  width: 150px;
+}
+
+#checkoutPage .orderInfo button {
+  display: block;
+  width: 20%;
+  margin: 64px auto;
+  border: 1px solid black;
+  background: none;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#checkoutPage .orderInfo button:hover {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 #checkoutPage .cart {

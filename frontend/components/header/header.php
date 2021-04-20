@@ -1,5 +1,5 @@
 <div class="header-container">
-    <nav id="navbar">
+    <nav class="<?php $minimalNav ? print('main-nav-minimal') : print('main-nav') ?>">
         <a href="../../">
             <figure id="logo">
                 <img src="../../img/logo.svg" alt="Wisteria's Logo">

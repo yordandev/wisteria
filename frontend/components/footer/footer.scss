@@ -2,7 +2,8 @@
 	margin: 0 auto;
 	text-align: center;
 	border-top: 1px solid lightgray;
-	footer {
+
+	.main-footer {
 		ul {
 			display: flex;
 			justify-content: space-around;
@@ -21,5 +22,9 @@
 				}
 			}
 		}
+	}
+
+	.main-footer-minimal {
+		display: none;
 	}
 }

@@ -1,4 +1,4 @@
-#navbar {
+.main-nav {
 	display: flex;
 
 	#logo {
@@ -36,5 +36,19 @@
 				}
 			}
 		}
+	}
+}
+
+.main-nav-minimal {
+	text-align: center;
+	#logo {
+		img {
+			width: 20%;
+			height: auto;
+		}
+	}
+
+	#menu {
+		display: none;
 	}
 }

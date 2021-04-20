@@ -4,7 +4,7 @@
   border-top: 1px solid lightgray;
 }
 
-.footer-container footer ul {
+.footer-container .main-footer ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,17 +12,21 @@
       justify-content: space-around;
 }
 
-.footer-container footer ul li {
+.footer-container .main-footer ul li {
   margin: 40px 120px 120px 120px;
 }
 
-.footer-container footer ul li a {
+.footer-container .main-footer ul li a {
   color: black;
   text-decoration: none;
   padding: 20px 10px;
 }
 
-.footer-container footer ul li a:hover {
+.footer-container .main-footer ul li a:hover {
   text-decoration: underline;
+}
+
+.footer-container .main-footer-minimal {
+  display: none;
 }
 /*# sourceMappingURL=footer.css.map */
