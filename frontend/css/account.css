@@ -1,0 +1,147 @@
+#accountPage {
+  margin: 0 20%;
+  text-align: center;
+}
+
+#accountPage #orderDetails,
+#accountPage #accountDetails {
+  width: 80%;
+  text-align: left;
+  margin-bottom: 80px;
+}
+
+#accountPage h1 {
+  border-bottom: 1px solid black;
+  line-height: 1.5;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+#accountPage h3 {
+  line-height: 1.5;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#accountPage h4 {
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+#accountPage .collapsible {
+  background: none;
+  width: 100%;
+  margin: 32px auto 0 auto;
+  border: none;
+  border-bottom: 3px solid black;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 32px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#accountPage .collapsible:focus {
+  outline: none;
+}
+
+#accountPage .collapsible:after {
+  content: "\02795";
+  /* Unicode character for "plus" sign */
+  font-size: 40px;
+  color: black;
+  float: right;
+  margin-left: 8px;
+}
+
+#accountPage .active:after {
+  content: "\2796";
+  /* Unicode character for "minus" sign */
+}
+
+#accountPage .content {
+  margin-top: 8px;
+  padding: 0 16px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
+}
+
+#accountPage .content ul {
+  width: 100%;
+}
+
+#accountPage .content ul li {
+  display: flex;
+  margin-top: 32px;
+}
+
+#accountPage .content ul li:first-child {
+  display: flex;
+  margin-top: 16px;
+}
+
+#accountPage .content figure {
+  width: 20%;
+}
+
+#accountPage .content figure img {
+  width: 100%;
+  object-fit: cover;
+}
+
+#accountPage .content .productInfo {
+  align-self: flex-end;
+  margin-left: 32px;
+}
+
+#accountPage .total {
+  border-top: 2px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 32px;
+}
+
+#accountPage .total p {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#accountPage .total p:last-child {
+  text-align: right;
+}
+
+#accountPage button {
+  width: 40%;
+  margin: 32px 0;
+  border: 1px solid black;
+  background: none;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  display: block;
+}
+
+#accountPage button:nth-of-type(2) {
+  color: red;
+}
+
+#accountPage #accountDetails button:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+#accountPage p {
+  margin-top: 24px;
+}
+
+#accountPage p a {
+  font-weight: bold;
+  text-decoration: underline;
+}

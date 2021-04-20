@@ -42,7 +42,7 @@
                         <option value="" disabled selected>Brand</option>
                         <option value="FilippaK">FilippaK</option>
                     </select>
-                    <input type="file" id="productImage" name="productImage">
+                    <input type="file" id="productImage" name="productImage" required>
                     <button type="submit">Add</button>
                 </form>
             </div>

@@ -22,8 +22,9 @@
   border-bottom: 3px solid black;
   text-align: center;
   line-height: 1.5;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 #adminPage .collapsible:focus {
