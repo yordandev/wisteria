@@ -6,23 +6,23 @@
 
 #checkoutPage .orderInfo {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   margin-right: 64px;
 }
 
-#checkoutPage .orderInfo [type='radio'] {
+#checkoutPage .orderInfo [type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-#checkoutPage .orderInfo [type='radio'] + img {
+#checkoutPage .orderInfo [type="radio"] + img {
   cursor: pointer;
 }
 
-#checkoutPage .orderInfo [type='radio']:checked + img {
+#checkoutPage .orderInfo [type="radio"]:checked + img {
   outline: 2px solid black;
 }
 
@@ -32,8 +32,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 #checkoutPage .orderInfo .shippingInfo h1 {
@@ -131,8 +131,8 @@
 
 #checkoutPage .cart {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 #checkoutPage .cart h1 {
@@ -166,8 +166,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -178,8 +178,8 @@
 
 #checkoutPage .cart ul li div a {
   -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -ms-flex: 2;
+  flex: 2;
   text-align: right;
   margin: auto 0;
   text-decoration: underline;
@@ -195,8 +195,8 @@
 
 #checkoutPage .cart .total p {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   font-weight: bold;
   font-size: 24px;
 }
