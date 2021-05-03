@@ -1,8 +1,8 @@
 <?php
-function echoGrid($a = 8, $img = "https://picsum.photos/200/300", $brand = "Test Brand", $title = "Product title", $size = "M", $price = "100"){
+function echoGrid($a = 8, $data=[]){
     echo "<ul class = 'productGrid'>";
     for($i = 0; $i<$a; $i++){
-        echo echoCard($img, $brand, $title, $size, $price);
+        echo echoCard($data[$i]->img, $data[$i]->brand, $data[$i]->title, $data[$i]->size, $data[$i]->price);
     }
     echo "</ul>";
 }

@@ -16,7 +16,7 @@ h1 {
 	font-size: 18px;
 	padding: 0;
 	margin-bottom: 1px;
-	font-family: monospace;
+	font-family: 'Roboto Mono';
 }
 .dropbtn:after {
 	content: '\02C5';

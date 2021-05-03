@@ -2,7 +2,7 @@
     <nav class="<?php $minimalNav ? print('main-nav-minimal') : print('main-nav') ?>">
         <a href="../../">
             <figure id="logo">
-                <img src="../../img/logo.svg" alt="Wisteria's Logo">
+                <img src="../../img/WisteriaLogo.png" alt="Wisteria's Logo">
             </figure>
         </a>
         <ul id="menu">
