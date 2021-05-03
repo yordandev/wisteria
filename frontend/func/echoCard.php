@@ -1,9 +1,9 @@
 <?php
-function echoCard($img = "https://picsum.photos/200/300", $brand = "Default Brand", $title = "Product title", $size = "M", $price = "100")
+function echoCard($id = 0, $img = "https://picsum.photos/200/300", $brand = "Default Brand", $title = "Product title", $size = "M", $price = "100")
 {
     $html = <<<"EOT"
        <li class="echoCard" style="list-style-type: none">
-       <a href="/?page=single" style="text-decoration: none;">
+       <a href="/?page=single&id=$id" style="text-decoration: none;">
        <figure><img src="$img" alt=""></figure>
        <div class="cardText"><h3>$brand</h3>
        <h4>$title</h4>
