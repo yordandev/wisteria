@@ -9,52 +9,31 @@
   font-weight: bold;
 }
 
-#cartPage ul li {
-  margin-bottom: 24px;
+#cartPage ul .echoCard {
+  margin-bottom: 64px;
 }
 
-#cartPage ul li div {
+#cartPage ul .echoCard a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#cartPage ul li div figure {
-  margin-right: 16px;
+#cartPage ul .echoCard a .cardText {
+  margin-left: 32px;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
 }
 
-#cartPage ul li div figure img {
-  width: 200px;
-  height: 300px;
-}
-
-#cartPage ul li div div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  gap: 16px;
-}
-
-#cartPage ul li div div h3 {
+#cartPage ul .echoCard a .cardText h3 {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
-#cartPage ul li div a {
-  -webkit-box-flex: 2;
-  -ms-flex: 2;
-  flex: 2;
-  text-align: right;
-  margin: auto 0;
-  text-decoration: none;
-}
-
-#cartPage ul li div a:hover {
-  text-decoration: underline;
+#cartPage ul .echoCard a .cardText h4 {
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
 #cartPage .total {

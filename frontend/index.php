@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <div class="grid-container">
+    <div class="<?php $pageName == 'home' ? print('grid-container-home') : print('grid-container') ?>">
         <?php
         include('./components/header/header.php')
         ?>

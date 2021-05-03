@@ -131,6 +131,17 @@ a {
 		'footer-container footer-container footer-container footer-container';
 }
 
+.grid-container-home {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 0.5fr 8fr 0.5fr;
+	gap: 0px 20px;
+	grid-template-areas:
+		'header-container header-container header-container header-container'
+		'content-container content-container content-container content-container'
+		'footer-container footer-container footer-container footer-container';
+}
+
 .header-container {
 	margin: 40px 120px;
 	grid-area: header-container;
