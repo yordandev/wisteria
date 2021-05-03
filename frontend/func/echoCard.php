@@ -15,4 +15,3 @@ function echoCard($img = "https://picsum.photos/200/300", $brand = "Default Bran
 
     echo $html;
 };
-?>
