@@ -32,11 +32,17 @@ h2 {
 .inspoImg {
 	margin-bottom: 80px;
 }
+
+.inspoImg:hover {
+	filter: brightness(50%);
+}
+
 #inspoImg2 {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 }
+
 #inspoImg3 {
 	margin-bottom: 192px;
 }
