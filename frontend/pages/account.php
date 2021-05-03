@@ -1,3 +1,9 @@
+<?php
+if ($_SESSION['userType'] == 'Guest') {
+    echo "Guest";
+}
+?>
+
 <div id="accountPage">
     <div id="accountDetails">
         <h1>Personal details</h1>
@@ -12,10 +18,8 @@
                 <button type="button" class="collapsible">#3 23-03-2021</button>
                 <div class="content">
                     <ul>
-
                         <?php echoCard();
                         echoCard(); ?>
-
                     </ul>
                     <div class="total">
                         <p>Total</p>

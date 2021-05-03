@@ -1,9 +1,9 @@
 <?php
-function echoGrid($a = 8, $data=[]){
+function echoGrid($data = [])
+{
     echo "<ul class = 'productGrid'>";
-    for($i = 0; $i<$a; $i++){
-        echo echoCard($data[$i]->img, $data[$i]->brand, $data[$i]->title, $data[$i]->size, $data[$i]->price);
+    for ($i = 0; $i < count($data); $i++) {
+        echo echoCard($data[$i]['id'], $data[$i]['img'], $data[$i]['brand'], $data[$i]['name'], $data[$i]['size'], $data[$i]['price']);
     }
     echo "</ul>";
 }
-?>

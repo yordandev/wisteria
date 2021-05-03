@@ -54,7 +54,7 @@ if ($category) {
 </div>
 
 <?php
-echo echoGrid(12);
+// echo echoGrid(12);
 
 ?>
 
