@@ -5,12 +5,12 @@
             <div class="content-menu">
                 <ul>
                     <li>
-                        <a href="/?page=products&gender=women">All</a>
-                        <a href="/?page=products&gender=women&category=tops">Tops</a>
-                        <a href="/?page=products&gender=women&category=pants/shorts">Pants/Shorts</a>
-                        <a href="/?page=products&gender=women&category=dress/skirt">Dress/Skirt</a>
-                        <a href="/?page=products&gender=women&category=outerwear">Outerwear</a>
-                        <a href="/?page=products&gender=women&category=accessories">Accessories</a>
+                        <a href="/?page=products&gender=women&category=all&sortBy=DESC">All</a>
+                        <a href="/?page=products&gender=women&category=tops&sortBy=DESC">Tops</a>
+                        <a href="/?page=products&gender=women&category=pants/shorts&sortBy=DESC">Pants/Shorts</a>
+                        <a href="/?page=products&gender=women&category=dress/skirt&sortBy=DESC">Dress/Skirt</a>
+                        <a href="/?page=products&gender=women&category=outerwear&sortBy=DESC">Outerwear</a>
+                        <a href="/?page=products&gender=women&category=accessories&sortBy=DESC">Accessories</a>
                     </li>
                 </ul>
             </div>
@@ -20,11 +20,11 @@
             <div class="content-menu">
                 <ul>
                     <li>
-                        <a href="/?page=products&gender=men">All</a>
-                        <a href="/?page=products&gender=men&category=tops">Tops</a>
-                        <a href="/?page=products&gender=men&category=pants/shorts">Pants/Shorts</a>
-                        <a href="/?page=products&gender=men&category=outerwear">Outerwear</a>
-                        <a href="/?page=products&gender=men&category=accessories">Accessories</a>
+                        <a href="/?page=products&gender=men&category=all&sortBy=DESC">All</a>
+                        <a href="/?page=products&gender=men&category=tops&sortBy=DESC">Tops</a>
+                        <a href="/?page=products&gender=men&category=pants/shorts&sortBy=DESC">Pants/Shorts</a>
+                        <a href="/?page=products&gender=men&category=outerwear&sortBy=DESC">Outerwear</a>
+                        <a href="/?page=products&gender=men&category=accessories&sortBy=DESC">Accessories</a>
                     </li>
                 </ul>
             </div>
@@ -34,12 +34,12 @@
             <div class="content-menu">
                 <ul>
                     <li>
-                        <a href="/?page=products&gender=unisex">All</a>
-                        <a href="/?page=products&gender=unisex&category=tops">Tops</a>
-                        <a href="/?page=products&gender=unisex&category=pants/shorts">Pants/Shorts</a>
-                        <a href="/?page=products&gender=unisex&category=dress/skirt">Dress/Skirt</a>
-                        <a href="/?page=products&gender=unisex&category=outerwear">Outerwear</a>
-                        <a href="/?page=products&gender=unisex&category=accessories">Accessories</a>
+                        <a href="/?page=products&gender=unisex&category=all&sortBy=DESC">All</a>
+                        <a href="/?page=products&gender=unisex&category=tops&sortBy=DESC">Tops</a>
+                        <a href="/?page=products&gender=unisex&category=pants/shorts&sortBy=DESC">Pants/Shorts</a>
+                        <a href="/?page=products&gender=unisex&category=dress/skirt&sortBy=DESC">Dress/Skirt</a>
+                        <a href="/?page=products&gender=unisex&category=outerwear&sortBy=DESC">Outerwear</a>
+                        <a href="/?page=products&gender=unisex&category=accessories&sortBy=DESC">Accessories</a>
                     </li>
                 </ul>
             </div>

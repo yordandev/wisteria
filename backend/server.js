@@ -14,6 +14,17 @@ const validateEmail = (email) => {
 	return re.test(String(email).toLowerCase())
 }
 
+const titleCase = (str) => {
+	let splitStr = str.toLowerCase().split('+')
+	for (var i = 0; i < splitStr.length; i++) {
+		// You do not need to check if i is larger than splitStr length, as your for does that for you
+		// Assign it back to the array
+		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
+	}
+	// Directly return the joined string
+	return splitStr.join(' ')
+}
+
 const generateAccessToken = (data) => jwt.sign(data, process.env.JWT_SECRET, { expiresIn: '3600s' })
 
 const authenticateToken = (req, res, next) => {
@@ -272,24 +283,65 @@ app.get('/users/:id', authenticateToken, (req, res) => {
 })
 
 app.get('/products', (req, res) => {
-	let sql = `SELECT product.id, product.name, product.price, product.fit, product.condition, product.image, product.dateAdded, product.available, size.name AS size, gender.name AS gender, brand.name AS brand, type.name AS type FROM product 
-  INNER JOIN size ON product.sizeId = size.id
-  INNER JOIN gender ON product.genderId = gender.id 
-  INNER JOIN brand ON product.brandId = brand.id 
-  INNER JOIN type ON product.typeId = type.id 
-  WHERE available = 1 ORDER BY dateAdded DESC`
-	let limit = req.query.limit
-
-	if (limit) {
-		sql = `SELECT product.id, product.name, product.price, product.fit, product.condition, product.image, product.dateAdded, product.available, size.name AS size, gender.name AS gender, brand.name AS brand, type.name AS type FROM product 
+	let defaultSql = `SELECT product.id, product.name, product.price, product.fit, product.condition, product.image, product.dateAdded, product.available, size.name AS size, gender.name AS gender, brand.name AS brand, type.name AS type FROM product 
     INNER JOIN size ON product.sizeId = size.id
     INNER JOIN gender ON product.genderId = gender.id 
     INNER JOIN brand ON product.brandId = brand.id 
     INNER JOIN type ON product.typeId = type.id 
-    WHERE available = 1 ORDER BY dateAdded DESC LIMIT ?`
+    WHERE available = 1`
+
+	const filters = {
+		gender: req.query.gender,
+		category: req.query.category,
+		size: req.query.size,
+		brand: req.query.brand,
+		sortBy: req.query.sortBy,
+		limit: req.query.limit,
 	}
 
-	db.query(sql, Number(limit), function (error, results, fields) {
+	console.log('Filters: ' + filters)
+
+	if (filters.gender) {
+		if (filters.gender != 'unisex') {
+			defaultSql += ` AND gender.name = '${
+				filters.gender.charAt(0).toUpperCase() + filters.gender.slice(1)
+			}'`
+		}
+	}
+
+	if (filters.category) {
+		if (filters.category != 'all') {
+			defaultSql += ` AND type.name = '${
+				filters.category.charAt(0).toUpperCase() + filters.category.slice(1)
+			}'`
+		}
+	}
+
+	if (filters.size) {
+		defaultSql += ` AND size.name = '${filters.size.charAt(0).toUpperCase()}'`
+	}
+
+	if (filters.brand) {
+		if (filters.brand.split('+').length >= 2) {
+			const titleCaseBrand = titleCase(filters.brand)
+			defaultSql += ` AND brand.name = '${titleCaseBrand}'`
+		}
+		defaultSql += ` AND brand.name = '${
+			filters.brand.charAt(0).toUpperCase() + filters.brand.slice(1)
+		}'`
+	}
+
+	if (filters.sortBy) {
+		defaultSql += ` ORDER BY dateAdded ${filters.sortBy.toUpperCase()}`
+	}
+
+	if (filters.limit) {
+		defaultSql += ` LIMIT ${filters.limit}`
+	}
+
+	console.log('SQL Query: ' + defaultSql)
+
+	db.query(defaultSql, function (error, results, fields) {
 		if (error) {
 			console.log(error)
 		}

@@ -21,18 +21,16 @@
             <li>
                 <a href="/?page=cart">Cart</a>
             </li>
-            <!-- <?php
-                    if ($_SESSION['userType']) {
-                        echo <<<EOT
+            <?php
+            if ($_SESSION['userType']) {
+                echo <<<EOT
                     <li>
                         <a href="/?page=logout">Logout</a>
                     </li>
                EOT;
-                    }
-                    ?> -->
-            <li>
-                <a href="/?page=logout">Logout</a>
-            </li>
+            }
+            ?>
+
         </ul>
     </nav>
 </div>

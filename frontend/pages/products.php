@@ -1,67 +1,65 @@
-<?php $gender = htmlspecialchars($_GET["gender"]);
+<?php
+$gender = htmlspecialchars($_GET["gender"]);
 $category = htmlspecialchars($_GET["category"]);
-function brands()
-{
-    $query  = explode('&', $_SERVER['QUERY_STRING']);
-    $params = array();
-    if (isset($_GET['brand'])) {
-        foreach ($query as $param) {
-            // prevent notice on explode() if $param has no '='
-            if (strpos($param, '=') === false) $param += '=';
-
-            list($name, $value) = explode('=', $param, 2);
-            $params[urldecode($name)][] = urldecode($value);
-        }
-        for ($i = 0; $i < count($params['brand']); $i++) {
-            echo ucfirst($params['brand'][$i] . ", ");
-        };
-    }
-};
-function sizes()
-{
-    $query  = explode('&', $_SERVER['QUERY_STRING']);
-    $params = array();
-    if (isset($_GET['size'])) {
-        foreach ($query as $param) {
-            // prevent notice on explode() if $param has no '='
-            if (strpos($param, '=') === false) $param += '=';
-
-            list($name, $value) = explode('=', $param, 2);
-            $params[urldecode($name)][] = urldecode($value);
-        }
-        for ($i = 0; $i < count($params['size']); $i++) {
-            echo ucfirst($params['size'][$i] . ", ");
-        };
-    }
-};
+$size = htmlspecialchars($_GET["size"]);
+$brand = htmlspecialchars($_GET["brand"]);
+$sortBy = htmlspecialchars($_GET["sortBy"]);
 
 
-if ($category) {
-    echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
-} else {
-    echo "<h1>" . ucwords($gender)  . " All </h1>";
+$_SESSION['filters'] = array(
+    "gender" => $gender,
+    "category" => $category,
+    "size" => $size,
+    "brand" => urlencode($brand),
+    "sortBy" => $sortBy
+);
+
+$newUrl = "http://68.183.14.165:3000/products?limit=16";
+
+if ($_SESSION['filters']['gender']) {
+    $newUrl = $newUrl . "&gender=" . $_SESSION['filters']['gender'];
 }
 
-?>
-<h3>Filtered by: <?php brands() . sizes() ?> </h3>
+if ($_SESSION['filters']['category']) {
+    $newUrl = $newUrl . "&category=" . $_SESSION['filters']['category'];
+}
 
+if ($_SESSION['filters']['size']) {
+    $newUrl = $newUrl . "&size=" . $_SESSION['filters']['size'];
+}
+
+if ($_SESSION['filters']['brand']) {
+    $newUrl = $newUrl . "&brand=" . $_SESSION['filters']['brand'];
+}
+
+if ($_SESSION['filters']['sortBy']) {
+    $newUrl = $newUrl . "&sortBy=" . $_SESSION['filters']['sortBy'];
+}
+
+$get_data = callAPI('GET', $newUrl, false);
+$productsResponse = json_decode($get_data, true);
+
+echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
+
+?>
 <div id="filter">
     <div class="dropdown" id="size">
         <button onclick="myFunction('myDropdown','sizeButton')" class="dropbtn" id="sizeButton">Size</button>
         <div id="myDropdown" class="dropdown-content">
             <?php
-            // $get_data = callAPI('GET', 'http://68.183.14.165:3000/sizes', false);
-            // $response = json_decode($get_data, true);
-            // for ($i = 0; $i < count($response); $i++) {
-            //     $lower = strtolower($response[$i]['name']);
-            //     $value = $response[$i]['name'];
-            //     $currentUrl = $_SERVER['REQUEST_URI'];
-            //     $sizeName = <<<"EOT"
-            //     <a href="$currentUrl&size=$lower">$value</a>
-            //     EOT;
-            //     echo $sizeName;
-            // }
-
+            $get_data = callAPI('GET', 'http://68.183.14.165:3000/sizes', false);
+            $response = json_decode($get_data, true);
+            for ($i = 0; $i < count($response); $i++) {
+                $lower = strtolower($response[$i]['name']);
+                $value = $response[$i]['name'];
+                // echo "<a href=" . $currentUrl . "&size="  . $lower . " onclick='clickAndDisable(this)'>" . $value . "</a>";
+                $sessionBrand = $_SESSION['filters']['brand'];
+                if ($_SESSION['filters']['brand']) {
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $lower . "&brand="  . urlencode($sessionBrand) . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                } else {
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size="  . $lower . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                }
+            }
             ?>
         </div>
     </div>
@@ -74,8 +72,11 @@ if ($category) {
             for ($i = 0; $i < count($response); $i++) {
                 $lower = strtolower($response[$i]['name']);
                 $value = $response[$i]['name'];
-                $currentUrl = $_SERVER['REQUEST_URI'];
-                echo "<a href=" . $currentUrl . "&brand="  . $lower . " onclick='clickAndDisable(this)'>" . $value . "</a>";
+                if ($_SESSION['filters']['size']) {
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $_SESSION['filters']['size'] . "&brand="  . urlencode($lower) . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                } else {
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&brand="  . urlencode($lower) . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                }
             }
             ?>
         </div>
@@ -90,8 +91,7 @@ if ($category) {
 </div>
 
 <?php
-// echo echoGrid(12);
-
+echoGrid($productsResponse);
 ?>
 
 <script>
@@ -100,18 +100,5 @@ toggle between hiding and showing the dropdown content */
     function myFunction(myDropdown, buttonId) {
         document.getElementById(buttonId).classList.toggle("active");
         document.getElementById(myDropdown).classList.toggle("show");
-    };
-
-    function test(element) {
-        console.log(element.value);
-        window.location.href = "/?page=products&gender=women&category=pants/shorts";
-        document.getElementById(element.id).checked = true;
-    };
-
-    function clickAndDisable(link) {
-        // disable subsequent clicks
-        link.onclick = function(event) {
-            event.preventDefault();
-        }
     }
 </script>
