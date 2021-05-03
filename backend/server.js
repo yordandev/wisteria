@@ -283,12 +283,21 @@ app.get("/users/:id", authenticateToken, (req, res) => {
 });
 
 app.get("/products", (req, res) => {
-  let sql = "SELECT * FROM product WHERE available = 1 ORDER BY dateAdded DESC";
+  let sql = `SELECT product.id, product.name, product.price, product.fit, product.condition, product.image, product.dateAdded, product.available, size.name AS size, gender.name AS gender, brand.name AS brand, type.name AS type FROM product 
+  INNER JOIN size ON product.sizeId = size.id
+  INNER JOIN gender ON product.genderId = gender.id 
+  INNER JOIN brand ON product.brandId = brand.id 
+  INNER JOIN type ON product.typeId = type.id 
+  WHERE available = 1 ORDER BY dateAdded DESC`;
   let limit = req.query.limit;
 
   if (limit) {
-    sql =
-      "SELECT * FROM product WHERE available = 1 ORDER BY dateAdded DESC LIMIT ?";
+    sql = `SELECT product.id, product.name, product.price, product.fit, product.condition, product.image, product.dateAdded, product.available, size.name AS size, gender.name AS gender, brand.name AS brand, type.name AS type FROM product 
+    INNER JOIN size ON product.sizeId = size.id
+    INNER JOIN gender ON product.genderId = gender.id 
+    INNER JOIN brand ON product.brandId = brand.id 
+    INNER JOIN type ON product.typeId = type.id 
+    WHERE available = 1 ORDER BY dateAdded DESC LIMIT ?`;
   }
 
   db.query(sql, Number(limit), function (error, results, fields) {

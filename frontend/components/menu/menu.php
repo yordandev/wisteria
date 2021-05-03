@@ -5,7 +5,7 @@
             <div class="content-menu">
                 <ul>
                     <li>
-                        <a href="/?page=products">All</a>
+                        <a href="/?page=products&gender='female'&category=''">All</a>
                         <a href="#">Tops</a>
                         <a href="#">Pants/Shorts</a>
                         <a href="#">Dress/Skirt</a>
