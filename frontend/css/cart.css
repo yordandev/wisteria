@@ -22,7 +22,7 @@
 #cartPage ul .echoCard a .cardText {
   margin-left: 32px;
   -ms-flex-item-align: end;
-  align-self: flex-end;
+      align-self: flex-end;
 }
 
 #cartPage ul .echoCard a .cardText h3 {
@@ -46,8 +46,8 @@
 
 #cartPage .total p {
   -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   font-weight: bold;
   font-size: 24px;
 }

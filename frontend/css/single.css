@@ -1,5 +1,5 @@
 #singleProductPage {
-  margin: 0 32px;
+  margin: 0 32px 64px 32px;
 }
 
 #singleProductPage h1 {
@@ -12,7 +12,7 @@
 #singleProductPage h3 {
   line-height: 1.5;
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 #singleProductPage h4 {

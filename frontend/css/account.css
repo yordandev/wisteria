@@ -73,28 +73,31 @@
   width: 100%;
 }
 
-#accountPage .content ul li {
+#accountPage ul .echoCard {
+  margin-bottom: 64px;
+}
+
+#accountPage ul .echoCard a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  margin-top: 32px;
 }
 
-#accountPage .content ul li:first-child {
-  display: flex;
-  margin-top: 16px;
-}
-
-#accountPage .content figure {
-  width: 20%;
-}
-
-#accountPage .content figure img {
-  width: 100%;
-  object-fit: cover;
-}
-
-#accountPage .content .productInfo {
-  align-self: flex-end;
+#accountPage ul .echoCard a .cardText {
   margin-left: 32px;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+#accountPage ul .echoCard a .cardText h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+#accountPage ul .echoCard a .cardText h4 {
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
 #accountPage .total {
