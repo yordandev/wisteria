@@ -283,15 +283,20 @@ app.get("/users/:id", authenticateToken, (req, res) => {
 });
 
 app.get("/products", (req, res) => {
-  db.query(
-    "SELECT * FROM product WHERE available = 1",
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-      res.json(results);
+  let sql = "SELECT * FROM product WHERE available = 1 ORDER BY dateAdded DESC";
+  let limit = req.query.limit;
+
+  if (limit) {
+    sql =
+      "SELECT * FROM product WHERE available = 1 ORDER BY dateAdded DESC LIMIT ?";
+  }
+
+  db.query(sql, Number(limit), function (error, results, fields) {
+    if (error) {
+      console.log(error);
     }
-  );
+    res.json(results);
+  });
 });
 
 app.post("/products", authenticateToken, (req, res) => {
