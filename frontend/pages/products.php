@@ -4,15 +4,15 @@
         <button onclick="myFunction('myDropdown','sizeButton')" class="dropbtn" id="sizeButton">Size</button>
         <div id="myDropdown" class="dropdown-content">
             <div>
-                <input type="checkbox" id="small" name="small">
+                <input type="checkbox" id="small" name="small" value="small" onclick="test(this)">
                 <label for="small">Small</label>
             </div>
             <div>
-                <input type="checkbox" id="medium" name="medium">
+                <input type="checkbox" id="medium" name="medium" value="medium" onclick="test(this)">
                 <label for="medium">Medium</label>
             </div>
             <div>
-                <input type="checkbox" id="large" name="large">
+                <input type="checkbox" id="large" name="large" value="large" onclick="test(this)">
                 <label for="large">Large</label>
             </div>
         </div>
@@ -43,16 +43,20 @@
     </div>
 </div>
 
-<?php 
+<?php
 echo echoGrid(12);
 
 ?>
 
 <script>
-/* When the user clicks on the button,
+    /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction(myDropdown, buttonId) {
-    document.getElementById(buttonId).classList.toggle("active");
-    document.getElementById(myDropdown).classList.toggle("show");
-}
+    function myFunction(myDropdown, buttonId) {
+        document.getElementById(buttonId).classList.toggle("active");
+        document.getElementById(myDropdown).classList.toggle("show");
+    }
+
+    function test(t) {
+        console.log(t.value)
+    }
 </script>

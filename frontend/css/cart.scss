@@ -9,37 +9,25 @@
 	}
 
 	ul {
-		li {
-			margin-bottom: 24px;
-
-			div {
+		.echoCard {
+			margin-bottom: 64px;
+			a {
 				display: flex;
 
-				figure {
-					margin-right: 16px;
-
-					img {
-						width: 200px;
-						height: 300px;
-					}
-				}
-
-				div {
-					display: flex;
-					flex-direction: column;
-					gap: 16px;
+				.cardText {
+					margin-left: 32px;
+					align-self: flex-end;
 
 					h3 {
 						font-size: 24px;
-						font-weight: bold;
+						font-weight: 500;
+						margin-bottom: 8px;
 					}
-				}
 
-				a {
-					flex: 2;
-					text-align: right;
-					margin: auto 0;
-					text-decoration: underline;
+					h4 {
+						font-weight: 500;
+						margin-bottom: 8px;
+					}
 				}
 			}
 		}
