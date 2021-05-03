@@ -17,7 +17,7 @@ $price = $response[0]['price'];
             <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
         </figure>
         <div class="productInfo">
-            <h3><?php echo $brandName; ?></h3>
+            <h3><?php echo $brand; ?></h3>
             <h4><?php echo $title; ?></h4>
             <h4><?php echo $fit; ?></h4>
             <h4><?php echo $condition; ?></h4>
