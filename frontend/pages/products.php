@@ -1,4 +1,11 @@
-<h1>Women All</h1>
+<?php $gender = htmlspecialchars($_GET["gender"]);
+$category = htmlspecialchars($_GET["category"]);
+if ($category) {
+    echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
+} else {
+    echo "<h1>" . ucwords($gender)  . " All </h1>";
+}
+?>
 <div id="filter">
     <div class="dropdown" id="size">
         <button onclick="myFunction('myDropdown','sizeButton')" class="dropbtn" id="sizeButton">Size</button>
@@ -20,6 +27,9 @@
     <div class="dropdown" id="brand">
         <button onclick="myFunction('myDropdown2','brandButton')" class="dropbtn" id="brandButton">Brand</button>
         <div id="myDropdown2" class="dropdown-content">
+            <?php
+
+            ?>
             <div>
                 <input type="checkbox" id="filippaK" name="filippaK">
                 <label for="filippaK">Filippa K</label>

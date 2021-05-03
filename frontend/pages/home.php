@@ -12,7 +12,7 @@ $price = $response[0]['price'];
 ?>
 
 <div>
-    <a href="">
+    <a href="/?page=products&gender=women">
         <figure id="inspoImg1" class="inspoImg">
             <div class="container">
                 <img src="https://picsum.photos/800/500" />
@@ -22,7 +22,7 @@ $price = $response[0]['price'];
             </div>
         </figure>
     </a>
-    <a href="">
+    <a href="/?page=products&gender=men">
         <figure id="inspoImg2" class="inspoImg">
             <div class="container">
                 <img src="https://picsum.photos/600/500" />
@@ -32,7 +32,7 @@ $price = $response[0]['price'];
             </div>
         </figure>
     </a>
-    <a href="">
+    <a href="/?page=products&gender=unisex">
         <figure id="inspoImg3" class="inspoImg">
             <div class="container">
                 <img src="https://picsum.photos/1000/400" />
