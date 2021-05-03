@@ -1,7 +1,7 @@
 <h1>Women All</h1>
 <div id="filter">
     <div class="dropdown" id="size">
-        <button onclick="myFunction('myDropdown')" class="dropbtn">Size</button>
+        <button onclick="myFunction('myDropdown','sizeButton')" class="dropbtn" id="sizeButton">Size</button>
         <div id="myDropdown" class="dropdown-content">
             <div>
                 <input type="checkbox" id="small" name="small">
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="dropdown" id="brand">
-        <button onclick="myFunction('myDropdown2')" class="dropbtn">Brand</button>
+        <button onclick="myFunction('myDropdown2','brandButton')" class="dropbtn" id="brandButton">Brand</button>
         <div id="myDropdown2" class="dropdown-content">
             <div>
                 <input type="checkbox" id="filippaK" name="filippaK">
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="dropdown" id="sorting">
-        <button onclick="myFunction('myDropdown3')" class="dropbtn">Sort By</button>
+        <button onclick="myFunction('myDropdown3', 'sortingButton')" class="dropbtn" id="sortingButton">Sort By</button>
         <div id="myDropdown3" class="dropdown-content">
             <a href="#">Newest</a>
             <a href="#">Oldest</a>
@@ -51,7 +51,8 @@ echo echoGrid(12);
 <script>
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction(myDropdown) {
+function myFunction(myDropdown, buttonId) {
+    document.getElementById(buttonId).classList.toggle("active");
     document.getElementById(myDropdown).classList.toggle("show");
 }
 </script>

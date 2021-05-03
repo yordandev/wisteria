@@ -23,7 +23,6 @@ h1 {
 	margin-left: 36px;
 	font-size: 18px;
 }
-/* Have problem with active */
 .dropbtn.active:after {
 	content: '\02C4';
 }
