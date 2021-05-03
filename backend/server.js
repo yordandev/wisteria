@@ -123,10 +123,12 @@ app.post('/signup', async (req, res) => {
 							req.userId = results.insertId
 							res.status(201).json({
 								message: 'You successfully registered',
-								id: results.insertId,
-								email: req.body.email,
-								type: 'Customer',
-								token: genToken,
+								user: {
+									id: results.insertId,
+									email: req.body.email,
+									type: 'Customer',
+									token: genToken,
+								},
 							})
 						}
 					)

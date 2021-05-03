@@ -1,3 +1,8 @@
+<?php
+if ($_SESSION['userType'] != 'Admin') {
+    echo "<script>window.location.href = '/?page=account'</script>";
+}
+?>
 <div id="adminPage">
     <ul id="addForms">
         <li>

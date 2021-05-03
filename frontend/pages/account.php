@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['userType'] == 'Guest') {
+if (!$_SESSION['userType']) {
     echo "<script>window.location.href = '?page=login'</script>";
 }
 ?>

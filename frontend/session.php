@@ -1,6 +1,10 @@
 <?php
 session_start();
-$_SESSION['userType'] = 'Guest';
+
+// if (!$_SESSION['userType'] || $_SESSION['userType'] != 'User' || $_SESSION['userType'] != 'Admin') {
+//     $_SESSION['userType'] = 'Guest';
+// }
+
 
 // if ($_SERVER['REMOTE_ADDR'] != $_SESSION['ip']) {
 //     session_unset();

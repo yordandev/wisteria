@@ -6,14 +6,32 @@
             </figure>
         </a>
         <ul id="menu">
-            <li>
-                <a href="/?page=admin">Admin</a>
-            </li>
+            <?php
+            if ($_SESSION['userType'] == 'Admin') {
+                echo <<<EOT
+                    <li>
+                        <a href="/?page=admin">Admin</a>
+                    </li>
+               EOT;
+            }
+            ?>
             <li>
                 <a href="/?page=account">Account</a>
             </li>
             <li>
                 <a href="/?page=cart">Cart</a>
+            </li>
+            <!-- <?php
+                    if ($_SESSION['userType']) {
+                        echo <<<EOT
+                    <li>
+                        <a href="/?page=logout">Logout</a>
+                    </li>
+               EOT;
+                    }
+                    ?> -->
+            <li>
+                <a href="/?page=logout">Logout</a>
             </li>
         </ul>
     </nav>
