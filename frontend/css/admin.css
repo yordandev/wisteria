@@ -1,0 +1,147 @@
+#adminPage {
+	margin: 0 20%;
+	text-align: center;
+}
+
+#adminPage form {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	gap: 8px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+#adminPage .collapsible {
+	background: none;
+	width: 80%;
+	margin: 32px auto 0 auto;
+	border: none;
+	border-bottom: 3px solid black;
+	text-align: center;
+	line-height: 1.5;
+	font-size: 30px;
+	font-weight: 700;
+}
+
+#adminPage .collapsible:focus {
+	outline: none;
+}
+
+#adminPage .collapsible:after {
+	content: '\02795';
+	/* Unicode character for "plus" sign */
+	font-size: 40px;
+	color: black;
+	float: right;
+	margin-left: 8px;
+}
+
+#adminPage .active:after {
+	content: '\2796';
+	/* Unicode character for "minus" sign */
+}
+
+#adminPage .content-form {
+	margin-top: 8px;
+	padding: 0 16px;
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	-webkit-transition: max-height 0.2s ease-out;
+	transition: max-height 0.2s ease-out;
+}
+
+#adminPage form input::-webkit-input-placeholder {
+	color: black;
+	font-weight: 700;
+	font-size: 32px;
+}
+#adminPage form input:focus::-webkit-input-placeholder {
+	color: rgba(0, 0, 0, 0.7);
+	font-weight: 700;
+	font-size: 32px;
+}
+
+#adminPage form :-ms-input-placeholder {
+	color: black;
+	font-weight: 700;
+	font-size: 32px;
+}
+
+#adminPage form ::-ms-input-placeholder {
+	color: black;
+	font-weight: 700;
+	font-size: 32px;
+}
+
+#adminPage form ::placeholder {
+	color: black;
+	font-weight: 700;
+	font-size: 32px;
+}
+
+#adminPage form input {
+	width: 60%;
+	margin: 0 auto;
+	border: none;
+	border-bottom: 1px solid black;
+	text-align: center;
+	line-height: 2;
+	font-size: 32px;
+	font-weight: 700;
+	margin-top: 24px;
+}
+
+#adminPage form select {
+	width: 60%;
+	max-width: 100%;
+	margin: 0 auto;
+	border: none;
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-size: 32px;
+	font-weight: 700;
+	margin-top: 24px;
+	padding-bottom: 16px;
+}
+
+#adminPage form select:focus,
+#adminPage form input:focus {
+	outline: none;
+}
+
+#adminPage input[type='file']::file-selector-button {
+	background-color: #fff;
+	border: 1.5px solid black;
+	padding: 16px;
+	margin: 0 16px 16px 0;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+#adminPage form button {
+	width: 20%;
+	margin: 32px auto 0 auto;
+	border: 1px solid black;
+	background: none;
+	padding: 16px;
+	font-size: 24px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+#adminPage form button:hover {
+	color: rgba(0, 0, 0, 0.7);
+}
+
+#adminPage p {
+	margin-top: 24px;
+}
+
+#adminPage p a {
+	font-weight: bold;
+	text-decoration: underline;
+}

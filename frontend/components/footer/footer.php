@@ -1,5 +1,5 @@
 <div class="footer-container">
-    <footer>
+    <footer class="<?php $minimalNav ? print('main-footer-minimal') : print('main-footer') ?>">
         <ul>
             <li>
                 <a href="#">About us</a>

@@ -1,0 +1,73 @@
+#cartPage {
+  margin: 0 20%;
+  text-align: left;
+}
+
+#cartPage h1 {
+  font-size: 32px;
+  margin-bottom: 32px;
+  font-weight: bold;
+}
+
+#cartPage ul .echoCard {
+  margin-bottom: 64px;
+}
+
+#cartPage ul .echoCard a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#cartPage ul .echoCard a .cardText {
+  margin-left: 32px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+#cartPage ul .echoCard a .cardText h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+#cartPage ul .echoCard a .cardText h4 {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+#cartPage .total {
+  border-top: 2px solid black;
+  padding-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#cartPage .total p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#cartPage .total p:last-child {
+  text-align: right;
+}
+
+#cartPage button {
+  display: block;
+  margin: 32px auto 0 auto;
+  border: 1px solid black;
+  background: none;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#cartPage button:hover {
+  color: #aeaeae;
+}
+/*# sourceMappingURL=cart.css.map */

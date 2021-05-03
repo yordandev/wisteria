@@ -1,21 +1,21 @@
-#navbar {
+.main-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#navbar #logo img {
+.main-nav #logo img {
   width: 50%;
   height: auto;
 }
 
-#navbar a {
+.main-nav a {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-#navbar #menu {
+.main-nav #menu {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -26,24 +26,37 @@
   text-align: right;
 }
 
-#navbar #menu li {
+.main-nav #menu li {
   padding: 20px 0;
   margin: 0 5px;
 }
 
-#navbar #menu li:first-of-type {
+.main-nav #menu li:first-of-type {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
 }
 
-#navbar #menu li a {
+.main-nav #menu li a {
   color: black;
   text-decoration: none;
   padding: 20px 10px;
 }
 
-#navbar #menu li a:hover {
+.main-nav #menu li a:hover {
   text-decoration: underline;
+}
+
+.main-nav-minimal {
+  text-align: center;
+}
+
+.main-nav-minimal #logo img {
+  width: 20%;
+  height: auto;
+}
+
+.main-nav-minimal #menu {
+  display: none;
 }
 /*# sourceMappingURL=header.css.map */

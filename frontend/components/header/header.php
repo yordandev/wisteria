@@ -1,16 +1,19 @@
 <div class="header-container">
-    <nav id="navbar">
+    <nav class="<?php $minimalNav ? print('main-nav-minimal') : print('main-nav') ?>">
         <a href="../../">
             <figure id="logo">
-                <img src="../../img/logo.svg" alt="Wisteria's Logo">
+                <img src="../../img/WisteriaLogo.png" alt="Wisteria's Logo">
             </figure>
         </a>
         <ul id="menu">
             <li>
-                <a href="../../account">Account</a>
+                <a href="/?page=admin">Admin</a>
             </li>
             <li>
-                <a href="../../">Cart</a>
+                <a href="/?page=account">Account</a>
+            </li>
+            <li>
+                <a href="/?page=cart">Cart</a>
             </li>
         </ul>
     </nav>
