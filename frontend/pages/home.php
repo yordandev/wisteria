@@ -1,3 +1,16 @@
+<?php
+$id = htmlspecialchars($_GET["id"]);
+$get_data = callAPI('GET', 'http://68.183.14.165:3000/products?limit=8' . $id, false);
+$response = json_decode($get_data, true);
+$image =  $response[0]['image'];
+$brand = $response[0]['brand'];
+$title = $response[0]['title'];
+$fit = $response[0]['fit'];
+$condition = $response[0]['condition'];
+$size = $response[0]['size'];
+$price = $response[0]['price'];
+?>
+
 <div>
     <a href="">
         <figure id="inspoImg1" class="inspoImg">
