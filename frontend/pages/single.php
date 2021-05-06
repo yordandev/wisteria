@@ -4,7 +4,7 @@ $get_data = callAPI('GET', 'http://68.183.14.165:3000/products/' . $id, false);
 $response = json_decode($get_data, true);
 $image =  $response[0]['image'];
 $brand = $response[0]['brand'];
-$title = $response[0]['title'];
+$title = $response[0]['name'];
 $fit = $response[0]['fit'];
 $condition = $response[0]['condition'];
 $size = $response[0]['size'];
@@ -17,12 +17,12 @@ $price = $response[0]['price'];
             <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
         </figure>
         <div class="productInfo">
-            <h3><?php echo $brandName; ?></h3>
+            <h3><?php echo $brand; ?></h3>
             <h4><?php echo $title; ?></h4>
-            <h4><?php echo $fit; ?></h4>
-            <h4><?php echo $condition; ?></h4>
-            <h4><?php echo $size; ?></h4>
-            <h4><?php echo $price . 'kr'; ?></h4>
+            <h4 style="font-size: 16px;">Fit: <?php echo $fit; ?></h4>
+            <h4 style="font-size: 16px;">Condition: <?php echo $condition; ?></h4>
+            <h4 style="font-size: 16px;">Size: <?php echo $size; ?></h4>
+            <h4 style="font-size: 16px;">Price: <?php echo $price . 'kr'; ?></h4>
             <button>Add to cart</button>
         </div>
     </div>
