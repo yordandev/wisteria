@@ -21,7 +21,6 @@ include('./session.php');
     <link rel="stylesheet" type="text/css" href="<?php echo './css/' . $pageName . '.css'; ?>">
     <script src='./js/main.js'></script>
     <title>Wisteria || <?php echo ucfirst($pageName); ?> </title>
-
 </head>
 
 <body>

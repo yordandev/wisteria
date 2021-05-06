@@ -4,3 +4,6 @@ include('./func/echoGrid.php');
 include('./func/callApi.php');
 include('./func/sortBy.php');
 include('./func/addBrand.php');
+include('./func/addSize.php');
+include('./func/addProduct.php');
+include('./func/uploadImage.php');

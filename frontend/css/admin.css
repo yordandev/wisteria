@@ -113,6 +113,10 @@
 	outline: none;
 }
 
+#adminPage input[type='file'] {
+	cursor: pointer;
+}
+
 #adminPage input[type='file']::file-selector-button {
 	background-color: #fff;
 	border: 1.5px solid black;
@@ -120,6 +124,7 @@
 	margin: 0 16px 16px 0;
 	font-weight: 700;
 	font-size: 24px;
+	cursor: pointer;
 }
 
 #adminPage form button {

@@ -14,10 +14,6 @@ if (isset($_POST['signUpEmail']) && isset($_POST['signUpPassword'])) {
         $signUpError = $signUpResponse['error'];
     }
 
-    echo $signUpResponse['user']['id'];
-
-
-
     if ($signUpResponse['user']) {
         $signUpUser = $signUpResponse['user'];
 
