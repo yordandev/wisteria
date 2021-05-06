@@ -3,14 +3,14 @@ if (!$_SESSION['userType']) {
     echo "<script>window.location.href = '?page=login'</script>";
 }
 
-if (isset($_POST['updatedPs']) && isset($_POST['checkPs']) && $_POST['updatedPs'] == $_POST['checkPs']) {
+if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["updatedPs"])) {
     $passwordData =  array(
         "password" => $_POST['updatedPs'],
     );
 
     $updateError = '';
 
-    $getPasswordData = callAPI('PATCH', 'http://68.183.14.165:1337/users/:id', json_encode($passwordData));
+    $getPasswordData = callAPI('PATCH', 'http://68.183.14.165:3000/users/:id', json_encode($passwordData));
     $passwordResponse = json_decode($getPasswordData, true);
 
     if ($passwordResponse['error']) {
@@ -32,7 +32,7 @@ if (isset($_POST['updatedPs']) && isset($_POST['checkPs']) && $_POST['updatedPs'
             <?php $updateError ? print("<p style='color: red; margin-bottom: 48px;'>{$updateError}</p>") : '' ?>
             <form action="/?page=account&action=updatePs" method="POST">
                 <input type="password" name="updatedPs" id="signUpPassword" required minlength="8" maxlength="32" placeholder="New password">
-                <input type="password" name="checkPs" id="signUpConfirmPassword" required minlength="8" maxlength="32" placeholder="Repeat new password">
+                <input type="password" id="signUpConfirmPassword" required minlength="8" maxlength="32" placeholder="Repeat new password">
                 <button type="submit">Update</button>
             </form>
         </div>
