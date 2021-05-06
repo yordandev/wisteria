@@ -2,19 +2,19 @@
     <footer class="<?php $minimalNav ? print('main-footer-minimal') : print('main-footer') ?>">
         <ul>
             <li>
-                <a href="#">About us</a>
+                <a href="/?page=about">About us</a>
             </li>
             <li>
-                <a href="#">FAQs</a>
+                <a href="/?page=faq">FAQs</a>
             </li>
             <li>
-                <a href="#">Return and shipping</a>
+                <a href="/?page=returnShipping">Return and shipping</a>
             </li>
             <li>
-                <a href="#">Privacy policy</a>
+                <a href="/?page=privacyPolicy">Privacy policy</a>
             </li>
             <li>
-                <a href="#">Help</a>
+                <a href="/?page=help">Help</a>
             </li>
         </ul>
     </footer>

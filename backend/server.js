@@ -554,12 +554,23 @@ app.post('/brands', authenticateToken, (req, res) => {
 			})
 		}
 
-		db.query('INSERT INTO brand(name) VALUES (?)', value, function (error, results, fields) {
+		db.query('SELECT name FROM brand WHERE name = ?', value, function (error, results, fields) {
 			if (error) {
 				console.log(error)
+			}
+			numRows = results.length
+			if (numRows == 1) {
+				res.status(409).json({
+					error: 'This brand already exists.',
+				})
 			} else {
-				res.status(201).json({
-					message: 'A brand was successfully added',
+				db.query('INSERT INTO brand(name) VALUES (?)', value, function (error, results, fields) {
+					if (error) {
+						console.log(error)
+					}
+					res.status(201).json({
+						message: 'A brand was successfully added',
+					})
 				})
 			}
 		})
@@ -598,12 +609,23 @@ app.post('/sizes', authenticateToken, (req, res) => {
 			})
 		}
 
-		db.query('INSERT INTO size(name) VALUES (?)', value, function (error, results, fields) {
+		db.query('SELECT name FROM size WHERE name = ?', value, function (error, results, fields) {
 			if (error) {
 				console.log(error)
+			}
+			numRows = results.length
+			if (numRows == 1) {
+				res.status(409).json({
+					error: 'This size already exists.',
+				})
 			} else {
-				res.status(201).json({
-					message: 'A brand was successfully added',
+				db.query('INSERT INTO size(name) VALUES (?)', value, function (error, results, fields) {
+					if (error) {
+						console.log(error)
+					}
+					res.status(201).json({
+						message: 'A size was successfully added',
+					})
 				})
 			}
 		})

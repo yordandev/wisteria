@@ -36,4 +36,4 @@ $response = json_decode($get_data, true);
     </figure>
 </div>
 <h2>New Arrivals</h2>
-<?php echo echoGrid($response) ?>
+<?php echo echoGrid($response); ?>
