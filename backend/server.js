@@ -451,19 +451,19 @@ app.get("/products/:id", (req, res) => {
   );
 });
 
-app.patch("/products/:id", (req, res) => {
-  const productId = req.params.id;
-  db.query(
-    "UPDATE product SET available = 0 WHERE id = ?",
-    productId,
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-      res.status(200).end();
-    }
-  );
-});
+// app.patch("/products/:id", (req, res) => {
+//   const productId = req.params.id;
+//   db.query(
+//     "UPDATE product SET available = 0 WHERE id = ?",
+//     productId,
+//     function (error, results, fields) {
+//       if (error) {
+//         console.log(error);
+//       }
+//       res.status(200).end();
+//     }
+//   );
+// });
 
 app.get("/purchases", authenticateToken, (req, res) => {
   const purchaseSql = `SELECT purchaseUser.purchaseId, purchaseUser.userId, purchase.total, purchase.purchaseDate, purchaseProduct.productId, product.name, product.price, size.name, product.fit, product.condition, product.image, brand.name 
@@ -538,6 +538,16 @@ app.post("/purchases", authenticateToken, async (req, res) => {
               if (error) {
                 console.log(error);
               } else {
+                db.query(
+                  "UPDATE product SET available = 0 WHERE id = IN (?)",
+                  req.body.products.flat(),
+                  function (error, results, fields) {
+                    if (error) {
+                      console.log(error);
+                    }
+                    res.status(200).end();
+                  }
+                );
                 res.status(201).json({
                   message: "Your purchase was successfully made",
                 });

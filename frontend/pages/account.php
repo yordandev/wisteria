@@ -75,32 +75,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
                     </div>
                 </div>
             </li>
-            <li>
-                <button type="button" class="collapsible">#2 23-03-2021</button>
-                <div class="content">
-                    <ul>
-                        <?php echoCard();
-                        echoCard(); ?>
-                    </ul>
-                    <div class="total">
-                        <p>Total</p>
-                        <p>2400kr</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <button type="button" class="collapsible">#1 23-03-2021</button>
-                <div class="content">
-                    <ul>
-                        <?php echoCard();
-                        echoCard(); ?>
-                    </ul>
-                    <div class="total">
-                        <p>Total</p>
-                        <p>2400kr</p>
-                    </div>
-                </div>
-            </li>
+
         </ul>
 
     </div>
