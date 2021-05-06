@@ -2,13 +2,18 @@
 if ($_SESSION['userType'] != 'Admin') {
     echo "<script>window.location.href = '/?page=account'</script>";
 }
+
+if (isset($_POST["brandName"])) {
+    addBrand($_POST["brandName"]);
+}
+
 ?>
 <div id="adminPage">
     <ul id="addForms">
         <li>
             <button type="button" class="collapsible">Add brand</button>
             <div class="content-form">
-                <form action="">
+                <form action="/?page=admin&action=addSize" method="POST">
                     <input type="text" name="brandName" id="brandName" required placeholder="Name">
                     <button type="submit">Add</button>
                 </form>
@@ -17,7 +22,7 @@ if ($_SESSION['userType'] != 'Admin') {
         <li>
             <button type="button" class="collapsible">Add size</button>
             <div class="content-form">
-                <form action="">
+                <form action="<?php $_SERVER['PHP_SELF']; ?>">
                     <input type="text" name="sizeName" id="sizeName" required placeholder="Name">
                     <button type="submit">Add</button>
                 </form>
