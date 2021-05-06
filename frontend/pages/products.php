@@ -55,7 +55,7 @@ echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
                 // echo "<a href=" . $currentUrl . "&size="  . $lower . " onclick='clickAndDisable(this)'>" . $value . "</a>";
                 $sessionBrand = $_SESSION['filters']['brand'];
                 if ($_SESSION['filters']['brand']) {
-                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $lower . "&brand="  . urlencode($sessionBrand) . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $lower . "&brand="  . $sessionBrand . "&sortBy="  . $sortBy . ">" . $value . "</a>";
                 } else {
                     echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size="  . $lower . "&sortBy="  . $sortBy . ">" . $value . "</a>";
                 }
@@ -95,10 +95,10 @@ echoGrid($productsResponse);
 ?>
 
 <script>
-    /* When the user clicks on the button,
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-    function myFunction(myDropdown, buttonId) {
-        document.getElementById(buttonId).classList.toggle("active");
-        document.getElementById(myDropdown).classList.toggle("show");
-    }
+function myFunction(myDropdown, buttonId) {
+    document.getElementById(buttonId).classList.toggle("active");
+    document.getElementById(myDropdown).classList.toggle("show");
+}
 </script>
