@@ -19,7 +19,7 @@
                 <a href="/?page=account">Account</a>
             </li>
             <li>
-                <a href="/?page=cart">Cart</a>
+                <a href="/?page=cart">Cart <?php count($_SESSION['cartItems']) == 0 ? '' : print('(' . count($_SESSION['cartItems']) . ')') ?></a>
             </li>
             <?php
             if ($_SESSION['userType']) {

@@ -8,6 +8,18 @@ if (!$response[0]['id']) {
     exit;
 }
 
+if (isset($_GET["action"]) && $_GET["action"] == 'addToCart' && isset($id)) {
+    $itemIndexInArray = array_search($itemId, array_column($_SESSION['cartItems'], 'id'));
+
+    if (!$itemIndexInArray) {
+        array_push($_SESSION['cartItems'], $response[0]);
+        $_SESSION['cartTotal'] = $_SESSION['cartTotal'] + $response[0]['price'];
+        echo "<script>window.location.href = '/?page=cart'</script>";
+    } else {
+        echo "<script>window.location.href = '/?page=cart'</script>";
+    }
+}
+
 $image =  $response[0]['image'];
 $brand = $response[0]['brand'];
 $title = $response[0]['name'];
@@ -30,7 +42,9 @@ $currentUrl = $_SERVER['HTTP_HOST'];
             <h4 style="font-size: 16px;">Condition: <?php echo $condition; ?></h4>
             <h4 style="font-size: 16px;">Size: <?php echo $size; ?></h4>
             <h4 style="font-size: 16px;">Price: <?php echo $price . 'kr'; ?></h4>
-            <button>Add to cart</button>
+            <form action="<?php echo '/?page=single&id=' . $id . '&action=addToCart'; ?>" method="POST">
+                <button type="submit">Add to cart</button>
+            </form>
         </div>
     </div>
 </div>
