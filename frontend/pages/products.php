@@ -86,50 +86,26 @@ echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
         <div id="myDropdown3" class="dropdown-content">
             <?php
             //newest links
-            if ($_SESSION['filters']['brand'] && !$_SESSION['filters']['size']) {
-                $_SESSION['filters']['sortBy'] = "DESC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&brand="  . $_SESSION['filters']['brand'] . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Newest </a>";
-            } else if ($_SESSION['filters']['size'] && !$_SESSION['filters']['brand']) {
-                $_SESSION['filters']['sortBy'] = "DESC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $_SESSION['filters']['size'] . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Newest </a>";
-            } else if ($_SESSION['filters']['size'] && $_SESSION['filters']['brand']) {
-                $_SESSION['filters']['sortBy'] = "DESC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $_SESSION['filters']['size'] . "&brand="  . $_SESSION['filters']['brand'] . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Newest </a>";
-            } else if (!$_SESSION['filters']['size'] && !$_SESSION['filters']['brand']) {
-                $_SESSION['filters']['sortBy'] = "DESC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Newest </a>";
-            }
-            //oldest links
-            if ($_SESSION['filters']['brand'] && !$_SESSION['filters']['size']) {
-                $_SESSION['filters']['sortBy'] = "ASC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&brand="  . $_SESSION['filters']['brand'] . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Oldest </a>";
-            } else if ($_SESSION['filters']['size'] && !$_SESSION['filters']['brand']) {
-                $_SESSION['filters']['sortBy'] = "ASC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $_SESSION['filters']['size'] . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Oldest </a>";
-            } else if ($_SESSION['filters']['size'] && $_SESSION['filters']['brand']) {
-                $_SESSION['filters']['sortBy'] = "ASC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $_SESSION['filters']['size'] . "&brand="  . $_SESSION['filters']['brand'] . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Oldest </a>";
-            } else if (!$_SESSION['filters']['size'] && !$_SESSION['filters']['brand']) {
-                $_SESSION['filters']['sortBy'] = "ASC";
-                echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&sortBy="  . $_SESSION['filters']['sortBy'] . "> Oldest </a>";
-            }
+            sortNewest($gender, $category);
+            // oldest links
+            sortOldest($gender, $category);
             ?>
         </div>
     </div>
 </div>
-
-<?php
+<div>
+    <?php
 if (count($productsResponse) == 0) {
     echo "No products are currently available.";
 }
 echoGrid($productsResponse);
 ?>
-
+</div>
 <script>
-    /* When the user clicks on the button,
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-    function myFunction(myDropdown, buttonId) {
-        document.getElementById(buttonId).classList.toggle("active");
-        document.getElementById(myDropdown).classList.toggle("show");
-    }
+function myFunction(myDropdown, buttonId) {
+    document.getElementById(buttonId).classList.toggle("active");
+    document.getElementById(myDropdown).classList.toggle("show");
+}
 </script>
