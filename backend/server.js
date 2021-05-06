@@ -250,38 +250,35 @@ app.patch("/users/:id", authenticateToken, async (req, res) => {
 });
 
 app.delete("/users/:id", authenticateToken, (req, res) => {
-  const value = req.params.id;
-  if (value == req.userId) {
-    db.query(
-      "DELETE FROM purchase WHERE id = ?",
-      value,
-      function (error, results, fields) {
-        if (error) {
-          console.log(error);
-        }
-        res.status(200).json({
-          message: "Your account was deleted.",
-        });
-      }
-    );
+  const value = req.userId;
+  //   db.query(
+  //     "DELETE FROM purchase WHERE id = ?",
+  //     value,
+  //     function (error, results, fields) {
+  //       if (error) {
+  //         console.log(error);
+  //       }
+  //       res.status(200).json({
+  //         message: "Your account was deleted.",
+  //       });
+  //     }
+  //   );
 
-    db.query(
-      "DELETE FROM user WHERE id = ?",
-      value,
-      function (error, results, fields) {
-        if (error) {
-          console.log(error);
-        }
-        res.status(200).json({
-          message: "Your account was deleted.",
+  db.query(
+    "DELETE FROM user WHERE id = ?",
+    value,
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+        res.status(400).json({
+          error: "Bad request",
         });
       }
-    );
-  } else {
-    res.status(401).json({
-      message: "You are unauthorized.",
-    });
-  }
+      res.status(200).json({
+        message: "Your account was deleted.",
+      });
+    }
+  );
 });
 
 app.get("/users/:id", authenticateToken, (req, res) => {

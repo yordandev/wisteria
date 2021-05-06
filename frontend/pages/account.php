@@ -21,6 +21,25 @@ if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["upd
     }
 }
 
+if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
+
+    $deleteError = '';
+    $getDeletedData = callAPI('DELETE', 'http://68.183.14.165:3000/users/:id', false);
+    $deleteResponse = json_decode($getDeletedData, true);
+
+    if ($deleteResponse['error']) {
+        $deleteError = $deleteResponse['error'];
+    }
+    if ($deleteResponse['message']) {
+        //echo $passwordResponse['message'];
+        session_unset();
+        session_destroy();
+        echo "<script>window.location.href = '/'</script>";
+
+        exit;
+    }
+}
+
 ?>
 
 <div id="accountPage">
@@ -36,7 +55,9 @@ if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["upd
                 <button type="submit">Update</button>
             </form>
         </div>
-        <button>Delete account</button>
+        <form action="/?page=account&action=deleteUser" method="POST">
+            <button>Delete account</button>
+        </form>
     </div>
     <div id="orderDetails">
         <h1>Orders</h1>
