@@ -2,13 +2,40 @@
 if (!$_SESSION['userType']) {
     echo "<script>window.location.href = '?page=login'</script>";
 }
+
+if (isset($_POST['updatedPs']) && isset($_POST['checkPs']) && $_POST['updatedPs'] == $_POST['checkPs']) {
+    $passwordData =  array(
+        "password" => $_POST['updatedPs'],
+    );
+
+    $updateError = '';
+
+    $getPasswordData = callAPI('PATCH', 'http://68.183.14.165:1337/users/:id', json_encode($passwordData));
+    $passwordResponse = json_decode($getPasswordData, true);
+
+    if ($passwordResponse['error']) {
+        $updateError = $passwordResponse['error'];
+    }
+    if ($passwordResponse['message']) {
+        echo $passwordResponse['message'];
+    }
+}
+
 ?>
 
 <div id="accountPage">
     <div id="accountDetails">
         <h1>Personal details</h1>
-        <p>Email: </p>
-        <button>Update account</button>
+        <p>Email: <?php echo $_SESSION['userEmail']; ?></p>
+        <button type="button" class="collapsible">Update account</button>
+        <div class="content">
+            <?php $updateError ? print("<p style='color: red; margin-bottom: 48px;'>{$updateError}</p>") : '' ?>
+            <form action="/?page=account&action=updatePs" method="POST">
+                <input type="password" name="updatedPs" id="signUpPassword" required minlength="8" maxlength="32" placeholder="New password">
+                <input type="password" name="checkPs" id="signUpConfirmPassword" required minlength="8" maxlength="32" placeholder="Repeat new password">
+                <button type="submit">Update</button>
+            </form>
+        </div>
         <button>Delete account</button>
     </div>
     <div id="orderDetails">

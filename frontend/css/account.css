@@ -28,6 +28,52 @@
   font-size: 16px;
 }
 
+#accountPage form input::-webkit-input-placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+#accountPage form input:focus::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#accountPage form :-ms-input-placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#accountPage form ::-ms-input-placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#accountPage form ::placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#accountPage form input {
+  width: 60%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: center;
+  line-height: 2;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 24px;
+}
+
+#accountPage form select:focus,
+#accountPage form input:focus {
+  outline: none;
+}
+
 #accountPage .collapsible {
   background: none;
   width: 100%;

@@ -9,12 +9,13 @@ $fit = $response[0]['fit'];
 $condition = $response[0]['condition'];
 $size = $response[0]['size'];
 $price = $response[0]['price'];
+$currentUrl = $_SERVER['HTTP_HOST'];
 ?>
 
 <div id="singleProductPage">
     <div id="product">
         <figure>
-            <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
+            <img src=<?php echo "http://$currentUrl/productImg/$image" ?> . alt=<?php echo $title; ?>>
         </figure>
         <div class="productInfo">
             <h3><?php echo $brand; ?></h3>

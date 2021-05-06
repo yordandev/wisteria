@@ -1,5 +1,5 @@
 <?php
-$get_data = callAPI('GET', 'http://68.183.14.165:3000/products?limit=8', false);
+$get_data = callAPI('GET', 'http://68.183.14.165:3000/products?limit=8&sortBy=DESC', false);
 $response = json_decode($get_data, true);
 ?>
 
@@ -7,7 +7,7 @@ $response = json_decode($get_data, true);
     <figure id="inspoImg1" class="inspoImg">
         <a href="/?page=products&gender=women">
             <div class="container">
-                <img src="https://picsum.photos/800/500" />
+                <img src="../productImg/women.jpg" />
                 <div class="overlay">
                     <div class="text">SHOP WOMEN</div>
                 </div>
@@ -17,7 +17,7 @@ $response = json_decode($get_data, true);
     <figure id="inspoImg2" class="inspoImg">
         <a href="/?page=products&gender=men">
             <div class="container">
-                <img src="https://picsum.photos/600/500" />
+                <img src="../productImg/men.jpg" />
                 <div class="overlay">
                     <div class="text">SHOP MEN</div>
                 </div>
@@ -27,7 +27,7 @@ $response = json_decode($get_data, true);
     <figure id="inspoImg3" class="inspoImg">
         <a href="/?page=products&gender=unisex">
             <div class="container">
-                <img src="https://picsum.photos/1000/400" />
+                <img src="../productImg/unisex.jpg" />
                 <div class="overlay">
                     <div class="text">SHOP UNISEX</div>
                 </div>
@@ -36,4 +36,4 @@ $response = json_decode($get_data, true);
     </figure>
 </div>
 <h2>New Arrivals</h2>
-<?php echo echoGrid($response) ?>
+<?php echo echoGrid($response); ?>

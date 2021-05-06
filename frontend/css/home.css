@@ -83,3 +83,18 @@ h2 {
 div {
   margin: 0;
 }
+
+.container img:nth-child(1) {
+  width: 800px;
+  height: 500px;
+}
+
+.container img:nth-child(2) {
+  width: 600px;
+  height: 500px;
+}
+
+.container img:nth-child(3) {
+  width: 1000px;
+  height: 400px;
+}
