@@ -1,5 +1,5 @@
 <div id="cartPage">
-    <h1>Cart (<?php print(count($cartItems)) ?>)</h1>
+    <h1>Cart <?php count($_SESSION['cartItems']) == 0 ? '' : print('(' . count($_SESSION['cartItems']) . ')') ?></h1>
     <ul>
         <?php echoCard();
         echoCard(); ?>

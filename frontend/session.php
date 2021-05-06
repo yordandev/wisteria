@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!$_SESSION['cartItems']) {
+    $_SESSION['cartItems'] = array();
+}
+
 // if (!$_SESSION['userType'] || $_SESSION['userType'] != 'User' || $_SESSION['userType'] != 'Admin') {
 //     $_SESSION['userType'] = 'Guest';
 // }
