@@ -97,15 +97,16 @@ echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
     <?php
 if (count($productsResponse) == 0) {
     echo "No products are currently available.";
+} else {
+    echoGrid($productsResponse);
 }
-echoGrid($productsResponse);
 ?>
 </div>
 <script>
-/* When the user clicks on the button,
+    /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction(myDropdown, buttonId) {
-    document.getElementById(buttonId).classList.toggle("active");
-    document.getElementById(myDropdown).classList.toggle("show");
-}
+    function myFunction(myDropdown, buttonId) {
+        document.getElementById(buttonId).classList.toggle("active");
+        document.getElementById(myDropdown).classList.toggle("show");
+    }
 </script>
