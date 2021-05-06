@@ -62,6 +62,32 @@ if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
     <div id="orderDetails">
         <h1>Orders</h1>
         <ul>
+            <?php
+            $getPurchaseData = callAPI('GET', 'http://68.183.14.165:3000/purchases', false);
+            $purchaseResponse = json_decode($getPurchaseData, true);
+            for ($i = 0; $i < count($purchaseResponse); $i++) {
+                $number = $i + 1;
+                $html =  <<<"EOT"
+                <li>
+                <button type="button" class="collapsible"> #$number 23-03-2021</button>
+                <div class="content">
+                <ul>
+                EOT;
+                echo $html;
+                $html2 = <<<"EOT"
+                </ul>
+                </div>
+                <figure><img src="http://$currentUrl/productImg/$img" style="height: 300px; width: 200px; object-fit: cover;" alt=""></figure>
+                <div class="cardText"><h3>$brand</h3>
+                <h4>$title</h4>
+                <h4>Size: $size</h4>
+                <h4>$price SEK</h4></div>
+                </a>
+                </li>
+          EOT;
+            }
+            echo $purchaseResponse[0]['purchaseId'];
+            ?>
             <li>
                 <button type="button" class="collapsible">#3 23-03-2021</button>
                 <div class="content">
