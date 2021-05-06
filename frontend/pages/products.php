@@ -91,6 +91,9 @@ echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
 </div>
 
 <?php
+if (count($productsResponse) == 0) {
+    echo "No products are currently available.";
+}
 echoGrid($productsResponse);
 ?>
 
