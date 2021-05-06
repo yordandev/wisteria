@@ -41,7 +41,7 @@ $productsResponse = json_decode($get_data, true);
 
 echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
 if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
-    echo " <a id='filterLink' href=/?page=products&gender=" . $gender . "&category=" . $category . ">Clear all filters</a>";
+    echo " <a id='filterLink' href=/?page=products&gender=" . $gender . "&category=" . $category . "&sortBy=DESC>Clear all filters</a>";
 }
 ?>
 <div id="filter">
@@ -97,12 +97,12 @@ if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
 </div>
 <div>
     <?php
-if (count($productsResponse) == 0) {
-    echo "No products are currently available.";
-} else {
-    echoGrid($productsResponse);
-}
-?>
+    if (count($productsResponse) == 0) {
+        echo "No products are currently available.";
+    } else {
+        echoGrid($productsResponse);
+    }
+    ?>
 </div>
 <script>
     /* When the user clicks on the button,

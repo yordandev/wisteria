@@ -7,8 +7,8 @@ if (isset($_POST['signUpEmail']) && isset($_POST['signUpPassword'])) {
 
     $signUpError = '';
 
-    $get_signup_user_data = callAPI('POST', 'http://68.183.14.165:3000/signup', json_encode($signUpData));
-    $signUpResponse = json_decode($get_signup_user_data, true);
+    $getSignupUserData = callAPI('POST', 'http://68.183.14.165:3000/signup', json_encode($signUpData));
+    $signUpResponse = json_decode($getSignupUserData, true);
 
     if ($signUpResponse['error']) {
         $signUpError = $signUpResponse['error'];

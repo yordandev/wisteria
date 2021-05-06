@@ -1,5 +1,5 @@
 <?php
-$get_data = callAPI('GET', 'http://68.183.14.165:3000/products?limit=8', false);
+$get_data = callAPI('GET', 'http://68.183.14.165:3000/products?limit=8&sortBy=DESC', false);
 $response = json_decode($get_data, true);
 ?>
 
