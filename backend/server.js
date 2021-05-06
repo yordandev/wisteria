@@ -539,8 +539,8 @@ app.post("/purchases", authenticateToken, async (req, res) => {
                 console.log(error);
               } else {
                 db.query(
-                  "UPDATE product SET available = 0 WHERE id = IN (?)",
-                  req.body.products.flat(),
+                  "UPDATE product SET available = 0 WHERE id IN (?)",
+                  req.body.products,
                   function (error, results, fields) {
                     if (error) {
                       console.log(error);

@@ -7,8 +7,8 @@ if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
 
     $loginError = '';
 
-    $get_login_user_data = callAPI('POST', 'http://68.183.14.165:3000/login', json_encode($loginData));
-    $loginResponse = json_decode($get_login_user_data, true);
+    $getLoginUserData = callAPI('POST', 'http://68.183.14.165:3000/login', json_encode($loginData));
+    $loginResponse = json_decode($getLoginUserData, true);
 
     if ($loginResponse['error']) {
         $loginError = $loginResponse['error'];
