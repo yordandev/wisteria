@@ -9,7 +9,7 @@ $sortBy = htmlspecialchars($_GET["sortBy"]);
 $_SESSION['filters'] = array(
     "gender" => $gender,
     "category" => $category,
-    "size" => $size,
+    "size" => urlencode($size),
     "brand" => urlencode($brand),
     "sortBy" => $sortBy
 );
@@ -40,7 +40,9 @@ $get_data = callAPI('GET', $newUrl, false);
 $productsResponse = json_decode($get_data, true);
 
 echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
-
+if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
+    echo " <a id='filterLink' href=/?page=products&gender=" . $gender . "&category=" . $category . ">Clear all filters</a>";
+}
 ?>
 <div id="filter">
     <div class="dropdown" id="size">
@@ -55,9 +57,9 @@ echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
                 // echo "<a href=" . $currentUrl . "&size="  . $lower . " onclick='clickAndDisable(this)'>" . $value . "</a>";
                 $sessionBrand = $_SESSION['filters']['brand'];
                 if ($_SESSION['filters']['brand']) {
-                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . $lower . "&brand="  . $sessionBrand . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . urlencode($lower) . "&brand="  . $sessionBrand . "&sortBy="  . $sortBy . ">" . $value . "</a>";
                 } else {
-                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size="  . $lower . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size="  . urlencode($lower) . "&sortBy="  . $sortBy . ">" . $value . "</a>";
                 }
             }
             ?>
