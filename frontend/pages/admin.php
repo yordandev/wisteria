@@ -68,7 +68,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
                         for ($i = 0; $i < count($response); $i++) {
                             $id = $response[$i]['id'];
                             $value = $response[$i]['name'];
-                            echo "<option value='$id'>$value</option>";
+                            echo "<option value='$id' id=$value>$value</option>";
                         }
                         ?>
                     </select>
@@ -104,11 +104,10 @@ if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
 </div>
 
 <script>
-    const genderSelect = document.getElementById("productGender");
-
     function genderFilter() {
         const gender = document.getElementById("productGender").value;
-        if (gender == 'Men') {
+
+        if (gender == 1) {
             document.getElementById("productType")[3].disabled = true;
         } else {
             document.getElementById("productType")[3].disabled = false;

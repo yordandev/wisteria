@@ -1,7 +1,7 @@
 <?php
 function uploadImage($image)
 {
-    $target_dir = "productsImg/";
+    $target_dir = "productImg/";
     $target_file = $target_dir . basename($image["name"]);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

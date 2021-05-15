@@ -17,7 +17,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["upd
         $updateError = $passwordResponse['error'];
     }
     if ($passwordResponse['message']) {
-        echo $passwordResponse['message'];
+        echo "<p style='margin-bottom: 48px; text-align:center;'>{$passwordResponse['message']}</p>";
     }
 }
 
@@ -54,7 +54,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
             </form>
         </div>
         <form action="/?page=account&action=deleteUser" method="POST">
-            <button>Delete account</button>
+            <button id="deleteBtn">Delete account</button>
         </form>
     </div>
 </div>

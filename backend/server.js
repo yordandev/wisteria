@@ -363,50 +363,38 @@ app.post('/products', authenticateToken, (req, res) => {
 			error: 'Unauthorized',
 		})
 	} else {
-		const values = [
-			req.body.name,
-			req.body.price,
-			req.body.sizeId,
-			req.body.fit,
-			req.body.condition,
-			req.body.image,
-			req.body.genderId,
-			req.body.typeId,
-			req.body.brandId,
-		]
+		const product = {
+			name: req.body.name,
+			price: Number(req.body.price),
+			sizeId: Number(req.body.sizeId),
+			fit: req.body.fit,
+			condition: req.body.condition,
+			image: req.body.image,
+			genderId: Number(req.body.genderId),
+			typeId: Number(req.body.typeId),
+			brandId: Number(req.body.brandId),
+  }
+
+		console.log('Product:' + product)
 
 		if (
 			!req.body.name ||
-			typeof req.body.name != 'string' ||
 			!req.body.price ||
-			typeof req.body.price != 'string' ||
-			typeof req.body.price != 'number' ||
 			!req.body.sizeId ||
-			typeof req.body.sizeId != 'string' ||
-			typeof req.body.sizeId != 'number' ||
 			!req.body.fit ||
-			typeof req.body.fit != 'string' ||
 			!req.body.condition ||
-			typeof req.body.condition != 'string' ||
 			!req.body.image ||
-			typeof req.body.image != 'string' ||
 			!req.body.genderId ||
-			typeof req.body.genderId != 'string' ||
-			typeof req.body.genderId != 'number' ||
 			!req.body.typeId ||
-			typeof req.body.typeId != 'string' ||
-			typeof req.body.typeId != 'number' ||
-			!req.body.brandId ||
-			typeof req.body.brandId != 'string' ||
-			typeof req.body.brandId != 'number'
+			!req.body.brandId
 		) {
 			res.status(400).json({
 				error: 'Bad request',
 			})
 		} else {
 			db.query(
-				'INSERT INTO product(name, price, sizeId, fit, condition, image, genderId, typeId, brandId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-				[values],
+				'INSERT INTO product SET ?',
+				product,
 				function (error, results, fields) {
 					if (error) {
 						console.log(error)
