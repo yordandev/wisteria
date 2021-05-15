@@ -1,19 +1,19 @@
 <?php
 function uploadImage($image)
 {
-    $target_dir = "productImg/";
-    $target_file = $target_dir . basename($image["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $targetDir = "/var/www/html/frontend/public/productImg/";
+    $targetFile = $targetDir . basename($image["name"]);
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
     // Check if file is an actual image or fake image
-    $check = getimagesize($image["name"]);
+    $check = getimagesize($image["tmp_name"]);
     if ($check == false) {
         echo "<p style='color: red; margin-bottom: 48px; text-align: center;'>File is not an image</p>";
         return false;
     }
 
     // Check if file already exists
-    if (file_exists($target_file)) {
+    if (file_exists($targetFile)) {
         echo "<p style='color: red; margin-bottom: 48px; text-align: center;'>Sorry, file already exists.</p>";
         return false;
     }
@@ -32,7 +32,7 @@ function uploadImage($image)
         return false;
     }
 
-    if (!move_uploaded_file($image["tmp_name"], $target_file)) {
+    if (!move_uploaded_file($image["tmp_name"], $targetFile)) {
         echo "<p style='color: red; margin-bottom: 48px; text-align: center;'>Sorry, there was an error uploading your file.</p>";
         return true;
     }
