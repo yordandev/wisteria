@@ -4,7 +4,7 @@
     </b>
     <br>
     <a href="tel:#">
-        070 533 74 19
+        xxx xxx xx xx
     </a>
 </p>
 <p><b>
