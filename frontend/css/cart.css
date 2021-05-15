@@ -11,12 +11,12 @@
 
 #cartPage ul .echoCard {
 	margin-bottom: 64px;
+	display: flex;
+	justify-content: space-between;
 }
 
 #cartPage ul .echoCard a {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
+	display: inline-flex;
 }
 
 #cartPage ul .echoCard a .cardText {
@@ -37,7 +37,17 @@
 }
 
 #cartPage ul .echoCard #removeLink {
-	display: inline-block !important;
+	display: inline-block;
+	margin: auto 0;
+}
+
+#cartPage ul .echoCard #removeLink a {
+	color: red;
+	text-decoration: none;
+}
+
+#cartPage ul .echoCard #removeLink a:hover {
+	text-decoration: underline;
 }
 
 #cartPage .total {

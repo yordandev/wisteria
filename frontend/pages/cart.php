@@ -5,6 +5,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'removeItem' && isset($_GET["it
     $_SESSION['cartTotal'] = $_SESSION['cartTotal'] - $_SESSION['cartItems'][$itemIndexInArray]['price'];
     unset($_SESSION['cartItems'][$itemIndexInArray]);
     $_SESSION['cartItems'] = array_values($_SESSION['cartItems']);
+    echo "<script>window.location.href = '?page=cart'</script>";
 };
 ?>
 

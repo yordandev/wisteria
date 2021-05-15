@@ -6,11 +6,11 @@ function echoCard($id = 0, $img = "https://picsum.photos/200/300", $brand = "Def
     $pageName = (isset($_REQUEST['page']));
     $removeLink = '';
     if ($pageName == 'cart') {
-        $removeLink = "<a href='/?page=cart&action=removeItem&itemId=$id' id='removeLink'>Remove</a>";
+        $removeLink = "<div id='removeLink'><a href='/?page=cart&action=removeItem&itemId=$id'>Remove</a></div>";
     }
 
     $html = <<<"EOT"
-       <li class="echoCard" style="list-style-type: none">
+       <li class="echoCard" style="list-style-type: none;">
        <a href="/?page=single&id=$id" style="text-decoration: none;">
        <figure><img src="http://$currentUrl/productImg/$img" style="height: 300px; width: 200px; object-fit: cover;" alt=""></figure>
        <div class="cardText">
