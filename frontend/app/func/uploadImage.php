@@ -2,6 +2,7 @@
 function uploadImage($image)
 {
     $targetDir = "/var/www/html/frontend/public/productImg/";
+    echo $image["tmp_name"];
     $targetFile = $targetDir . basename($image["name"]);
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 

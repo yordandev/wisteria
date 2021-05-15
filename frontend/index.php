@@ -1,7 +1,7 @@
 <?php
-include('../app/functions.php');
-include('../app/router.php');
-include('../app/session.php');
+include('./app/functions.php');
+include('./app/router.php');
+include('./app/session.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,14 +12,13 @@ include('../app/session.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="./img/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="./css/layout.css">
-    <link rel="stylesheet" type="text/css" href="./components/header/header.css">
-    <link rel="stylesheet" type="text/css" href="./components/menu/menu.css">
-    <link rel="stylesheet" type="text/css" href="./components/footer/footer.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo './css/' . $pageName . '.css'; ?>">
-    <script src='./js/main.js'></script>
+    <link rel="icon" type="image/png" href="./public/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./public/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="./public/components/header/header.css">
+    <link rel="stylesheet" type="text/css" href="./public/components/menu/menu.css">
+    <link rel="stylesheet" type="text/css" href="./public/components/footer/footer.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo './public/css/' . $pageName . '.css'; ?>">
+    <script src='./public/js/main.js'></script>
     <title>Wisteria || <?php echo ucfirst($pageName); ?> </title>
 </head>
 
@@ -36,12 +35,12 @@ include('../app/session.php');
                             print('grid-container');
                     } ?>"></div>
         <?php
-        include('./components/header/header.php')
+        include('./public/components/header/header.php');
         ?>
         <div class=" <?php $menuVisible ? print('content-container') : print('content-container-no-menu') ?>">
             <?php
             if ($menuVisible) {
-                include('./components/menu/menu.php');
+                include('./public/components/menu/menu.php');
             }
             ?>
             <div class="content">
@@ -49,16 +48,15 @@ include('../app/session.php');
                 if (file_exists($desiredPage)) {
                     include($desiredPage);
                 } else {
-                    include("pages/404.php");
+                    include("./public/pages/404.php");
                 }
                 ?>
             </div>
         </div>
         <?php
-        include('./components/footer/footer.php')
+        include('./public/components/footer/footer.php')
         ?>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 </body>
 
 
