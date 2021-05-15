@@ -3,9 +3,9 @@
 function echoCard($id = 0, $img = "https://picsum.photos/200/300", $brand = "Default Brand", $title = "Product title", $size = "M", $price = "100")
 {
     $currentUrl = $_SERVER['HTTP_HOST'];
-    $pageName = (isset($_REQUEST['page']));
+    $pageName = ($_REQUEST['page']);
     $removeLink = '';
-    if ($pageName === 'cart') {
+    if ($pageName == 'cart') {
         $removeLink = "<div id='removeLink'><a href='/?page=cart&action=removeItem&itemId=$id'>Remove</a></div>";
     }
 
