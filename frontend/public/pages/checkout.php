@@ -48,11 +48,11 @@ if (isset($_POST['firstName'])) {
             <h2>Payment Option</h2>
             <label>
                 <input type="radio" name="payment" value="paypal" checked required>
-                <img src="./public/img/paypal-logo.png">
+                <img src="../img/paypal-logo.png">
             </label>
             <label>
                 <input type="radio" name="payment" value="klarna" required>
-                <img src="./public/img/klarna-logo.png">
+                <img src="../img/klarna-logo.png">
             </label>
         </div>
         <button type="submit">Purchase</button>

@@ -20,7 +20,7 @@ $_SESSION['filters'] = array(
     <figure id="inspoImg1" class="inspoImg">
         <a href="/?page=products&gender=women">
             <div class="container">
-                <img src="./public/productImg/women.jpg" />
+                <img src="../productImg/women.jpg" />
                 <div class="overlay">
                     <div class="text">SHOP WOMEN</div>
                 </div>
@@ -30,7 +30,7 @@ $_SESSION['filters'] = array(
     <figure id="inspoImg2" class="inspoImg">
         <a href="/?page=products&gender=men">
             <div class="container">
-                <img src="./public/productImg/men.jpg" />
+                <img src="../productImg/men.jpg" />
                 <div class="overlay">
                     <div class="text">SHOP MEN</div>
                 </div>
@@ -40,7 +40,7 @@ $_SESSION['filters'] = array(
     <figure id="inspoImg3" class="inspoImg">
         <a href="/?page=products&gender=unisex">
             <div class="container">
-                <img src="./public/productImg/unisex.jpg" />
+                <img src="../productImg/unisex.jpg" />
                 <div class="overlay">
                     <div class="text">SHOP UNISEX</div>
                 </div>

@@ -40,7 +40,7 @@ echo " <a class='breadcrumb' href=/?page=products&gender=" . $gender . "&categor
 <div id="singleProductPage">
     <div id="product">
         <figure>
-            <img src=<?php echo "http://$currentUrl/public/productImg/$image" ?> . alt=<?php echo $title; ?>>
+            <img src=<?php echo "http://$currentUrl/productImg/$image" ?> . alt=<?php echo $title; ?>>
         </figure>
         <div class="productInfo">
             <h3><?php echo $brand; ?></h3>

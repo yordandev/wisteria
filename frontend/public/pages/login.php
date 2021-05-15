@@ -17,6 +17,8 @@ if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
     if ($loginResponse['user'][0]) {
         $loginUser = $loginResponse['user'][0];
 
+        echo "<script type='text/javascript'>notyf.success('Your changes have been successfully saved!'); </script>";
+
         $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['useragent'] = $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['lastaccess'] = time();

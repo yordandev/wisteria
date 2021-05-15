@@ -30,4 +30,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
     confirmPassword.onkeyup = validatePassword;
   }
 
+  const notyf = new Notyf();
 });
