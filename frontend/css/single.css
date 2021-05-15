@@ -59,3 +59,13 @@
 	font-weight: bold;
 	text-decoration: underline;
 }
+
+.breadcrumb {
+	margin-bottom: 32px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.breadcrumb:hover {
+	text-decoration: underline;
+}

@@ -6,6 +6,14 @@ if (!$response[0]['id']) {
     echo "<p style='color: red; margin-bottom: 48px; text-align: center;'>No products are available at the moment.</p>";
     exit;
 }
+
+$_SESSION['filters'] = array(
+    "gender" => '',
+    "category" => '',
+    "size" => '',
+    "brand" => '',
+    "sortBy" => ''
+);
 ?>
 
 <div>

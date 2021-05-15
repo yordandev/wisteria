@@ -70,18 +70,40 @@
 	text-align: right;
 }
 
-#cartPage button {
+#cartPage #checkoutBtn {
 	display: block;
-	margin: 32px auto 0 auto;
 	border: 1px solid black;
+	margin: 32px auto;
+	text-align: center;
+	width: 200px;
 	background: none;
 	padding: 16px;
 	font-size: 24px;
 	font-weight: 700;
 	cursor: pointer;
+	text-decoration: none;
 }
 
-#cartPage button:hover {
+#cartPage #checkoutBtn:hover {
 	color: #aeaeae;
 }
+
+#cartPage #emptyCart a {
+	display: block;
+	border: 1px solid black;
+	margin-top: 32px;
+	text-align: center;
+	width: 200px;
+	background: none;
+	padding: 16px;
+	font-size: 24px;
+	font-weight: 700;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#cartPage #emptyCart a:hover {
+	color: #aeaeae;
+}
+
 /*# sourceMappingURL=cart.css.map */

@@ -9,14 +9,14 @@ if (!$response[0]['id']) {
 }
 
 if (isset($_GET["action"]) && $_GET["action"] == 'addToCart' && isset($id)) {
-    $itemIndexInArray = array_search($itemId, array_column($_SESSION['cartItems'], 'id'));
+    $itemIndexInArray = array_search($id, array_column($_SESSION['cartItems'], 'id'));
 
-    if (!$itemIndexInArray) {
+    if ($itemIndexInArray === false) {
         array_push($_SESSION['cartItems'], $response[0]);
         $_SESSION['cartTotal'] = $_SESSION['cartTotal'] + $response[0]['price'];
-        echo "<script>window.location.href = '/?page=cart'</script>";
+        echo "<script>window.location.href = '?page=single&id=$id'</script>";
     } else {
-        echo "<script>window.location.href = '/?page=cart'</script>";
+        echo "<p style='color: red; margin-bottom: 16px;'>This item is already in your cart.</p>";
     }
 }
 
@@ -28,6 +28,13 @@ $condition = $response[0]['condition'];
 $size = $response[0]['size'];
 $price = $response[0]['price'];
 $currentUrl = $_SERVER['HTTP_HOST'];
+
+$gender =  $_SESSION['filters']['gender'];
+$category =  $_SESSION['filters']['category'];
+$slash = $_SESSION['filters']['gender'] ? ' / ' : '';
+echo " <a class='breadcrumb' href=/?page=products&gender=" . $gender . "&category=all" . "&sortBy=DESC>" . ucFirst($gender) . "</a>";
+echo $slash;
+echo " <a class='breadcrumb' href=/?page=products&gender=" . $gender . "&category=" . $category . "&sortBy=DESC>" . ucFirst($category) . "</a>";
 ?>
 
 <div id="singleProductPage">

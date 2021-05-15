@@ -8,11 +8,11 @@
         <ul id="menu">
             <?php
             if ($_SESSION['userType'] == 'Admin') {
-                echo <<<EOT
+                echo <<<HTMLSTRING
                     <li>
                         <a href="/?page=admin">Admin</a>
                     </li>
-               EOT;
+               HTMLSTRING;
             }
             ?>
             <li>
@@ -23,11 +23,11 @@
             </li>
             <?php
             if ($_SESSION['userType']) {
-                echo <<<EOT
+                echo <<<HTMLSTRING
                     <li>
                         <a href="/?page=logout">Logout</a>
                     </li>
-               EOT;
+               HTMLSTRING;
             }
             ?>
 
