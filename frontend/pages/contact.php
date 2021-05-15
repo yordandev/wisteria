@@ -3,7 +3,7 @@
         Phone number:
     </b>
     <br>
-    <a href="tel:0705337419">
+    <a href="tel:#">
         070 533 74 19
     </a>
 </p>
@@ -11,7 +11,7 @@
         Email:
     </b>
     <br>
-    <a href="mailto:webmaster@example.com">
+    <a href="mailto:#">
         webmaster@example.com
     </a>
 </p>
