@@ -32,8 +32,10 @@ function uploadImage($image)
         return false;
     }
 
-    if (!move_uploaded_file($image["tmp_name"], $targetFile)) {
-        echo "<p style='color: red; margin-bottom: 48px; text-align: center;'>Sorry, there was an error uploading your file.</p>";
+    if (move_uploaded_file($image["tmp_name"], $targetFile)) {
         return true;
+    } else {
+        echo "<p style='color: red; margin-bottom: 48px; text-align: center;'>Sorry, there was an error uploading your file.</p>";
+        return false;
     }
 }
