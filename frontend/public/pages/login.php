@@ -1,5 +1,6 @@
 <?php
 if (!empty($_POST['token'])) {
+    echo "heeey";
     if (hash_equals($_SESSION['token'], $_POST['token'])) {
         if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
             $loginData =  array(
