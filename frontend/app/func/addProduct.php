@@ -7,7 +7,7 @@ function sanitizeProduct($p)
 function addProduct($product)
 {
     $checkedProduct = array_map('sanitizeProduct', $product);
-    $imageUploaded = uploadImage($_FILES["productImage"]['name']);
+    $imageUploaded = uploadImage($_FILES["productImage"]);
 
     if ($imageUploaded) {
         $addProductRes = callAPI('POST', 'http://68.183.14.165:3000/products/', json_encode($checkedProduct));
