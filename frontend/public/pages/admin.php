@@ -17,7 +17,7 @@ if (!empty($_POST['token'])) {
             $product = $_POST;
             $product['image'] = $_FILES["productImage"]['name'];
             $image = $_FILES["productImage"];
-            echo $_FILES["productImage"]['tmp_name'];
+            echo $product['image'];
             addProduct($product, $image);
         }
     }
