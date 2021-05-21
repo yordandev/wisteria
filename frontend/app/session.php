@@ -33,6 +33,7 @@ if ($_SESSION['userType'] && time() > ($_SESSION['lastaccess'] + 3600)) {
 if (!$_SESSION['token']) {
     $_SESSION['token'] = bin2hex(random_bytes(32));
     $token = $_SESSION['token'];
+    echo "token set";
 }
 
 if (!$_SESSION['cartItems']) {
