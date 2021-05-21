@@ -4,7 +4,6 @@ function uploadImage($image)
     $targetDir = "/var/www/html/frontend/public/productImg/";
     $targetFile = $targetDir . basename($image["name"]);
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-    echo $image["tmp_name"];
 
     // Check if file is an actual image or fake image
     $check = getimagesize($image["tmp_name"]);
