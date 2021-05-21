@@ -8,19 +8,15 @@ if (!$response[0]['id']) {
     exit;
 }
 
-if (!empty($_POST['token'])) {
-    if (hash_equals($_SESSION['token'], $_POST['token'])) {
-        if (isset($_GET["action"]) && $_GET["action"] == 'addToCart' && isset($id)) {
-            $itemIndexInArray = array_search($id, array_column($_SESSION['cartItems'], 'id'));
+if (isset($_GET["action"]) && $_GET["action"] == 'addToCart' && isset($id)) {
+    $itemIndexInArray = array_search($id, array_column($_SESSION['cartItems'], 'id'));
 
-            if ($itemIndexInArray === false) {
-                array_push($_SESSION['cartItems'], $response[0]);
-                $_SESSION['cartTotal'] = $_SESSION['cartTotal'] + $response[0]['price'];
-                echo "<script>window.location.href = '?page=single&id=$id'</script>";
-            } else {
-                echo "<p style='color: red; margin-bottom: 16px;'>This item is already in your cart.</p>";
-            }
-        }
+    if ($itemIndexInArray === false) {
+        array_push($_SESSION['cartItems'], $response[0]);
+        $_SESSION['cartTotal'] = $_SESSION['cartTotal'] + $response[0]['price'];
+        echo "<script>window.location.href = '?page=single&id=$id'</script>";
+    } else {
+        echo "<p style='color: red; margin-bottom: 16px;'>This item is already in your cart.</p>";
     }
 }
 
