@@ -7,28 +7,32 @@ if (!$_SESSION['cartItems']) {
     echo "<script>window.location.href = '?page=cart'</script>";
 }
 
-if (isset($_POST['firstName'])) {
-    $purchaseError = '';
-    $products = array_column($_SESSION['cartItems'], 'id');
-    $productData = array(
-        "products" => $products
-    );
+if (!empty($_POST['token'])) {
+    if (hash_equals($_SESSION['token'], $_POST['token'])) {
+        if (isset($_POST['firstName'])) {
+            $purchaseError = '';
+            $products = array_column($_SESSION['cartItems'], 'id');
+            $productData = array(
+                "products" => $products
+            );
 
-    $getPurchaseData = callAPI('POST', 'http://68.183.14.165:3000/purchases', json_encode($productData));
-    $purchaseResponse = json_decode($getPurchaseData, true);
+            $getPurchaseData = callAPI('POST', 'http://68.183.14.165:3000/purchases', json_encode($productData));
+            $purchaseResponse = json_decode($getPurchaseData, true);
 
 
-    if ($purchaseResponse['error']) {
-        $purchaseError = $purchaseResponse['error'];
-        echo $purchaseError;
-    }
+            if ($purchaseResponse['error']) {
+                $purchaseError = $purchaseResponse['error'];
+                echo $purchaseError;
+            }
 
-    if ($purchaseResponse['purchaseId'] && $purchaseResponse['message']) {
-        $purchaseId = $purchaseResponse['purchaseId'];
-        $purchaseMessage = $purchaseResponse['message'];
-        $_SESSION['cartItems'] = array();
-        $_SESSION['cartTotal'] = 0;
-        echo "<script>window.location.href = '?page=confirmation&purchaseId=$purchaseId&purchaseMessage=$purchaseMessage'</script>";
+            if ($purchaseResponse['purchaseId'] && $purchaseResponse['message']) {
+                $purchaseId = $purchaseResponse['purchaseId'];
+                $purchaseMessage = $purchaseResponse['message'];
+                $_SESSION['cartItems'] = array();
+                $_SESSION['cartTotal'] = 0;
+                echo "<script>window.location.href = '?page=confirmation&purchaseId=$purchaseId&purchaseMessage=$purchaseMessage'</script>";
+            }
+        }
     }
 }
 
@@ -43,6 +47,7 @@ if (isset($_POST['firstName'])) {
                 <input type="text" required name="address" placeholder="Address" minlength="5" maxlength="60" pattern="[A-Za-z0-9]+">
                 <input type="text" required name="postalCode" placeholder="Postal code" minlength="5" maxlength="5" pattern="[0-9]+">
                 <input type=" text" required name="city" placeholder="City" maxlength="20" pattern="[A-Za-z]+">
+                <input type="hidden" name="token" value="<?php echo $token; ?>" />
         </div>
         <div class="paymentInfo">
             <h2>Payment Option</h2>
@@ -55,6 +60,7 @@ if (isset($_POST['firstName'])) {
                 <img src="../img/klarna-logo.png">
             </label>
         </div>
+        <input type="hidden" name="token" value="<?php echo $token; ?>" />
         <button type="submit">Purchase</button>
     </form>
     <div class="cart">

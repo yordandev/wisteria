@@ -3,19 +3,23 @@ if ($_SESSION['userType'] != 'Admin') {
     echo "<script>window.location.href = '/?page=account'</script>";
 }
 
-if (isset($_GET["action"]) && $_GET["action"] == 'addBrand' && isset($_POST["brandName"])) {
-    addBrand($_POST["brandName"]);
-}
+if (!empty($_POST['token'])) {
+    if (hash_equals($_SESSION['token'], $_POST['token'])) {
+        if (isset($_GET["action"]) && $_GET["action"] == 'addBrand' && isset($_POST["brandName"])) {
+            addBrand($_POST["brandName"]);
+        }
 
-if (isset($_GET["action"]) && $_GET["action"] == 'addSize' && isset($_POST["sizeName"])) {
-    addSize($_POST["sizeName"]);
-}
+        if (isset($_GET["action"]) && $_GET["action"] == 'addSize' && isset($_POST["sizeName"])) {
+            addSize($_POST["sizeName"]);
+        }
 
-if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
-    $product = $_POST;
-    $product['image'] = $_FILES["productImage"]['name'];
-    $image = $_FILES["productImage"];
-    addProduct($product, $image);
+        if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
+            $product = $_POST;
+            $product['image'] = $_FILES["productImage"]['name'];
+            $image = $_FILES["productImage"];
+            addProduct($product, $image);
+        }
+    }
 }
 
 ?>
@@ -27,6 +31,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
             <div class="content-form">
                 <form action="/?page=admin&action=addBrand" method="POST">
                     <input type="text" name="brandName" id="brandName" required placeholder="Name">
+                    <input type="hidden" name="token" value="<?php echo $token; ?>" />
                     <button type="submit">Add</button>
                 </form>
             </div>
@@ -36,6 +41,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
             <div class="content-form">
                 <form action="/?page=admin&action=addSize" method="POST">
                     <input type="text" name="sizeName" id="sizeName" required placeholder="Name">
+                    <input type="hidden" name="token" value="<?php echo $token; ?>" />
                     <button type="submit">Add</button>
                 </form>
             </div>
@@ -97,6 +103,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
                         ?>
                     </select>
                     <input type="file" id="productImage" name="productImage" required accept="image/x-png,image/jpeg">
+                    <input type="hidden" name="token" value="<?php echo $token; ?>" />
                     <button type="submit">Add</button>
                 </form>
             </div>

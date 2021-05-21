@@ -3,40 +3,44 @@ if (!$_SESSION['userType']) {
     echo "<script>window.location.href = '?page=login'</script>";
 }
 
-if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["updatedPs"])) {
-    $passwordData =  array(
-        "password" => htmlspecialchars($_POST['updatedPs'], ENT_QUOTES),
-    );
+if (!empty($_POST['token'])) {
+    if (hash_equals($_SESSION['token'], $_POST['token'])) {
+        if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["updatedPs"])) {
+            $passwordData =  array(
+                "password" => htmlspecialchars($_POST['updatedPs'], ENT_QUOTES),
+            );
 
-    $updateError = '';
+            $updateError = '';
 
-    $getPasswordData = callAPI('PATCH', 'http://68.183.14.165:3000/users/:id', json_encode($passwordData));
-    $passwordResponse = json_decode($getPasswordData, true);
+            $getPasswordData = callAPI('PATCH', 'http://68.183.14.165:3000/users/:id', json_encode($passwordData));
+            $passwordResponse = json_decode($getPasswordData, true);
 
-    if ($passwordResponse['error']) {
-        $updateError = $passwordResponse['error'];
-    }
-    if ($passwordResponse['message']) {
-        session_regenerate_id();
-        echo "<p style='margin-bottom: 48px; text-align:center;'>{$passwordResponse['message']}</p>";
-    }
-}
+            if ($passwordResponse['error']) {
+                $updateError = $passwordResponse['error'];
+            }
+            if ($passwordResponse['message']) {
+                session_regenerate_id();
+                echo "<p style='margin-bottom: 48px; text-align:center;'>{$passwordResponse['message']}</p>";
+            }
+        }
 
-if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
+        if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
 
-    $deleteError = '';
-    $getDeletedData = callAPI('DELETE', 'http://68.183.14.165:3000/users/:id', false);
-    $deleteResponse = json_decode($getDeletedData, true);
+            $deleteError = '';
+            $getDeletedData = callAPI('DELETE', 'http://68.183.14.165:3000/users/:id', false);
+            $deleteResponse = json_decode($getDeletedData, true);
 
-    if ($deleteResponse['error']) {
-        $deleteError = $deleteResponse['error'];
-    }
-    if ($deleteResponse['message']) {
-        session_regenerate_id();
-        session_unset();
-        session_destroy();
-        echo "<script>window.location.href = '/'</script>";
-        exit;
+            if ($deleteResponse['error']) {
+                $deleteError = $deleteResponse['error'];
+            }
+            if ($deleteResponse['message']) {
+                session_regenerate_id();
+                session_unset();
+                session_destroy();
+                echo "<script>window.location.href = '/'</script>";
+                exit;
+            }
+        }
     }
 }
 
@@ -52,10 +56,12 @@ if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
             <form action="/?page=account&action=updatePs" method="POST">
                 <input type="password" name="updatedPs" id="signUpPassword" required minlength="8" maxlength="32" placeholder="New password">
                 <input type="password" id="signUpConfirmPassword" required minlength="8" maxlength="32" placeholder="Repeat new password">
+                <input type="hidden" name="token" value="<?php echo $token; ?>" />
                 <button type="submit">Update</button>
             </form>
         </div>
         <form action="/?page=account&action=deleteUser" method="POST">
+            <input type="hidden" name="token" value="<?php echo $token; ?>" />
             <button id="deleteBtn">Delete account</button>
         </form>
     </div>
