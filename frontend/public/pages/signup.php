@@ -16,8 +16,7 @@ if (isset($_POST['signUpEmail']) && isset($_POST['signUpPassword'])) {
 
     if ($signUpResponse['user']) {
         $signUpUser = $signUpResponse['user'];
-
-        echo "<script type='text/javascript'>notyf.success('Your changes have been successfully saved!'); </script>";
+        session_regenerate_id();
 
         $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['useragent'] = $_SERVER['HTTP_USER_AGENT'];

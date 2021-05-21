@@ -17,7 +17,6 @@ include('../app/session.php');
     <link rel="stylesheet" type="text/css" href="./components/header/header.css">
     <link rel="stylesheet" type="text/css" href="./components/menu/menu.css">
     <link rel="stylesheet" type="text/css" href="./components/footer/footer.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo './css/' . $pageName . '.css'; ?>">
     <script src='./js/main.js'></script>
     <title>Wisteria || <?php echo ucfirst($pageName); ?> </title>
@@ -58,7 +57,6 @@ include('../app/session.php');
         include('./components/footer/footer.php')
         ?>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 </body>
 
 
