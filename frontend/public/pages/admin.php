@@ -16,9 +16,7 @@ if (!empty($_POST['token'])) {
         if (isset($_GET["action"]) && $_GET["action"] == 'addProduct') {
             $product = $_POST;
             $product['image'] = $_FILES["productImage"]['name'];
-            $image = $_FILES["productImage"];
-            echo $product['image'];
-            addProduct($product, $image);
+            addProduct($product);
         }
     }
 }

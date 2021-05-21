@@ -4,11 +4,10 @@ function sanitizeProduct($p)
     return htmlspecialchars($p, ENT_QUOTES);
 }
 
-function addProduct($product, $image)
+function addProduct($product)
 {
     $checkedProduct = array_map('sanitizeProduct', $product);
-    echo $image["tmp_name"];
-    $imageUploaded = uploadImage($image);
+    $imageUploaded = uploadImage($_FILES["productImage"]['name']);
 
     if ($imageUploaded) {
         $addProductRes = callAPI('POST', 'http://68.183.14.165:3000/products/', json_encode($checkedProduct));
