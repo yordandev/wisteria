@@ -7,6 +7,7 @@ function sanitizeProduct($p)
 function addProduct($product, $image)
 {
     $checkedProduct = array_map('sanitizeProduct', $product);
+    echo $image["tmp_name"];
     $imageUploaded = uploadImage($image);
 
     if ($imageUploaded) {
