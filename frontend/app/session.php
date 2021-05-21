@@ -34,6 +34,10 @@ if (!$_SESSION['cartItems']) {
     $_SESSION['cartItems'] = array();
 }
 
+if ($_SESSION['token']) {
+    $token = $_SESSION['token'];
+}
+
 if (!$_SESSION['cartTotal']) {
     $_SESSION['cartTotal'] = 0;
 }

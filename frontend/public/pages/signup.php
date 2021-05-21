@@ -18,8 +18,6 @@ if (isset($_POST['signUpEmail']) && isset($_POST['signUpPassword'])) {
         $signUpUser = $signUpResponse['user'];
         session_regenerate_id();
         $_SESSION['token'] = bin2hex(random_bytes(32));
-        $token = $_SESSION['token'];
-
         $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['useragent'] = $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['lastaccess'] = time();

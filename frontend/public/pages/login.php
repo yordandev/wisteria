@@ -18,8 +18,6 @@ if (isset($_POST['loginEmail']) && isset($_POST['loginPassword'])) {
         $loginUser = $loginResponse['user'][0];
         session_regenerate_id();
         $_SESSION['token'] = bin2hex(random_bytes(32));
-        $token = $_SESSION['token'];
-
         $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['useragent'] = $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['lastaccess'] = time();
