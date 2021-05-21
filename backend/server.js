@@ -49,6 +49,9 @@ const authenticateToken = (req, res, next) => {
 		await db.query(userCheckSql, user.id, function (error, results, fields) {
 			if (error) {
 				console.log(error)
+				res.status(500).json({
+					error: 'An error occured.',
+				})
 			}
 			if (results.length == 1) {
 				req.userId = user.id
@@ -112,6 +115,9 @@ app.post('/signup', async (req, res) => {
 			function (error, results, fields) {
 				if (error) {
 					console.log(error)
+					res.status(500).json({
+						error: 'An error occured.',
+					})
 				}
 				numRows = results.length
 				if (numRows == 1) {
@@ -125,6 +131,9 @@ app.post('/signup', async (req, res) => {
 						function (error, results, fields) {
 							if (error) {
 								console.log(error)
+								res.status(500).json({
+									error: 'An error occured.',
+								})
 							}
 							const tokenData = {
 								email: req.body.email,
@@ -189,6 +198,9 @@ app.post('/login', async (req, res, next) => {
 					function (error, results, fields) {
 						if (error) {
 							console.log(error)
+							res.status(500).json({
+								error: 'An error occured.',
+							})
 						}
 						const tokenData = {
 							email: results[0].email,
@@ -233,6 +245,9 @@ app.patch('/users/:id', authenticateToken, async (req, res) => {
 			function (error, results, fields) {
 				if (error) {
 					console.log(error)
+					res.status(500).json({
+						error: 'An error occured.',
+					})
 				}
 				res.status(200).json({
 					message: 'You successfully updated your password.',
@@ -249,7 +264,10 @@ app.delete('/users/:id', authenticateToken, (req, res) => {
 	//     value,
 	//     function (error, results, fields) {
 	//       if (error) {
-	//         console.log(error);
+	//         console.log(error)
+	res.status(500).json({
+		error: 'An error occured.',
+	})
 	//       }
 	//       res.status(200).json({
 	//         message: "Your account was deleted.",
@@ -260,6 +278,9 @@ app.delete('/users/:id', authenticateToken, (req, res) => {
 	db.query('DELETE FROM user WHERE id = ?', value, function (error, results, fields) {
 		if (error) {
 			console.log(error)
+			res.status(500).json({
+				error: 'An error occured.',
+			})
 			res.status(400).json({
 				error: 'Bad request',
 			})
@@ -279,6 +300,9 @@ app.get('/users/:id', authenticateToken, (req, res) => {
 			function (error, results, fields) {
 				if (error) {
 					console.log(error)
+					res.status(500).json({
+						error: 'An error occured.',
+					})
 				}
 				res.json(results)
 			}
@@ -352,6 +376,9 @@ app.get('/products', (req, res) => {
 	db.query(defaultSql, function (error, results, fields) {
 		if (error) {
 			console.log(error)
+			res.status(500).json({
+				error: 'An error occured.',
+			})
 		}
 		res.json(results)
 	})
@@ -373,7 +400,7 @@ app.post('/products', authenticateToken, (req, res) => {
 			genderId: Number(req.body.genderId),
 			typeId: Number(req.body.typeId),
 			brandId: Number(req.body.brandId),
-  }
+		}
 
 		console.log('Product:' + product)
 
@@ -392,18 +419,17 @@ app.post('/products', authenticateToken, (req, res) => {
 				error: 'Bad request',
 			})
 		} else {
-			db.query(
-				'INSERT INTO product SET ?',
-				product,
-				function (error, results, fields) {
-					if (error) {
-						console.log(error)
-					}
-					res.status(201).json({
-						message: 'A new product was successfully added',
+			db.query('INSERT INTO product SET ?', product, function (error, results, fields) {
+				if (error) {
+					console.log(error)
+					res.status(500).json({
+						error: 'An error occured.',
 					})
 				}
-			)
+				res.status(201).json({
+					message: 'A new product was successfully added',
+				})
+			})
 		}
 	}
 })
@@ -422,6 +448,9 @@ app.get('/products/:id', (req, res) => {
 		function (error, results, fields) {
 			if (error) {
 				console.log(error)
+				res.status(500).json({
+					error: 'An error occured.',
+				})
 			}
 			res.json(results)
 		}
@@ -435,7 +464,10 @@ app.get('/products/:id', (req, res) => {
 //     productId,
 //     function (error, results, fields) {
 //       if (error) {
-//         console.log(error);
+//         console.log(error)
+res.status(500).json({
+	error: 'An error occured.',
+})
 //       }
 //       res.status(200).end();
 //     }
@@ -456,6 +488,9 @@ app.get('/purchases', authenticateToken, (req, res) => {
 	db.query(purchaseSql, values, function (error, results, fields) {
 		if (error) {
 			console.log(error)
+			res.status(500).json({
+				error: 'An error occured.',
+			})
 		}
 		res.json(results)
 	})
@@ -474,6 +509,9 @@ app.post('/purchases', authenticateToken, async (req, res) => {
 			async function (error, results, fields) {
 				if (error) {
 					console.log(error)
+					res.status(500).json({
+						error: 'An error occured.',
+					})
 				} else {
 					const userValues = [results.insertId, req.userId]
 					purchaseId = results.insertId
@@ -483,6 +521,9 @@ app.post('/purchases', authenticateToken, async (req, res) => {
 						function (error, results, fields) {
 							if (error) {
 								console.log(error)
+								res.status(500).json({
+									error: 'An error occured.',
+								})
 							}
 						}
 					)
@@ -494,6 +535,9 @@ app.post('/purchases', authenticateToken, async (req, res) => {
 							function (error, results, fields) {
 								if (error) {
 									console.log(error)
+									res.status(500).json({
+										error: 'An error occured.',
+									})
 								}
 							}
 						)
@@ -516,6 +560,9 @@ app.post('/purchases', authenticateToken, async (req, res) => {
 						function (error, results, fields) {
 							if (error) {
 								console.log(error)
+								res.status(500).json({
+									error: 'An error occured.',
+								})
 							} else {
 								const sql =
 									'UPDATE product SET available = 0 WHERE id IN (' +
@@ -524,6 +571,9 @@ app.post('/purchases', authenticateToken, async (req, res) => {
 								db.query(sql, function (error, results, fields) {
 									if (error) {
 										console.log(error)
+										res.status(500).json({
+											error: 'An error occured.',
+										})
 									}
 									res.status(200).end()
 								})
@@ -544,6 +594,9 @@ app.get('/brands', (req, res) => {
 	db.query('SELECT * FROM brand', function (error, results, fields) {
 		if (error) {
 			console.log(error)
+			res.status(500).json({
+				error: 'An error occured.',
+			})
 		}
 		res.json(results)
 	})
@@ -566,6 +619,9 @@ app.post('/brands', authenticateToken, (req, res) => {
 		db.query('SELECT name FROM brand WHERE name = ?', value, function (error, results, fields) {
 			if (error) {
 				console.log(error)
+				res.status(500).json({
+					error: 'An error occured.',
+				})
 			}
 			numRows = results.length
 			if (numRows == 1) {
@@ -576,6 +632,9 @@ app.post('/brands', authenticateToken, (req, res) => {
 				db.query('INSERT INTO brand(name) VALUES (?)', value, function (error, results, fields) {
 					if (error) {
 						console.log(error)
+						res.status(500).json({
+							error: 'An error occured.',
+						})
 					}
 					res.status(201).json({
 						message: 'A brand was successfully added',
@@ -590,6 +649,9 @@ app.get('/genders', (req, res) => {
 	db.query('SELECT * FROM gender', function (error, results, fields) {
 		if (error) {
 			console.log(error)
+			res.status(500).json({
+				error: 'An error occured.',
+			})
 		}
 		res.json(results)
 	})
@@ -599,6 +661,9 @@ app.get('/sizes', (req, res) => {
 	db.query('SELECT * FROM size', function (error, results, fields) {
 		if (error) {
 			console.log(error)
+			res.status(500).json({
+				error: 'An error occured.',
+			})
 		}
 		res.json(results)
 	})
@@ -621,6 +686,9 @@ app.post('/sizes', authenticateToken, (req, res) => {
 		db.query('SELECT name FROM size WHERE name = ?', value, function (error, results, fields) {
 			if (error) {
 				console.log(error)
+				res.status(500).json({
+					error: 'An error occured.',
+				})
 			}
 			numRows = results.length
 			if (numRows == 1) {
@@ -631,6 +699,9 @@ app.post('/sizes', authenticateToken, (req, res) => {
 				db.query('INSERT INTO size(name) VALUES (?)', value, function (error, results, fields) {
 					if (error) {
 						console.log(error)
+						res.status(500).json({
+							error: 'An error occured.',
+						})
 					}
 					res.status(201).json({
 						message: 'A size was successfully added',
@@ -645,6 +716,9 @@ app.get('/types', (req, res) => {
 	db.query('SELECT * FROM type', function (error, results, fields) {
 		if (error) {
 			console.log(error)
+			res.status(500).json({
+				error: 'An error occured.',
+			})
 		}
 		res.json(results)
 	})
