@@ -17,6 +17,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["upd
         $updateError = $passwordResponse['error'];
     }
     if ($passwordResponse['message']) {
+        session_regenerate_id();
         echo "<p style='margin-bottom: 48px; text-align:center;'>{$passwordResponse['message']}</p>";
     }
 }
@@ -31,6 +32,7 @@ if (isset($_GET["action"]) && $_GET["action"] == 'deleteUser') {
         $deleteError = $deleteResponse['error'];
     }
     if ($deleteResponse['message']) {
+        session_regenerate_id();
         session_unset();
         session_destroy();
         echo "<script>window.location.href = '/'</script>";
