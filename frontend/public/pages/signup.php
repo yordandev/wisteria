@@ -19,6 +19,9 @@ if (!empty($_POST['token'])) {
             if ($signUpResponse['user']) {
                 $signUpUser = $signUpResponse['user'];
                 session_regenerate_id();
+                $_SESSION['token'] = bin2hex(random_bytes(32));
+                $token = $_SESSION['token'];
+                echo "token set";
 
                 $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
                 $_SESSION['useragent'] = $_SERVER['HTTP_USER_AGENT'];
