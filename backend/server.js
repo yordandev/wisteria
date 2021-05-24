@@ -476,14 +476,12 @@ res.status(500).json({
 
 app.get('/purchases', authenticateToken, (req, res) => {
 	const purchaseSql = `SELECT purchase.total, purchase.purchaseDate, purchaseProduct.productId, product.name, product.price, size.name, product.fit, product.condition, product.image, brand.name 
-    FROM purchaseUser 
-    INNER JOIN purchase ON purchaseUser.purchaseId = purchase.id 
+    FROM purchase 
     INNER JOIN purchaseProduct ON purchase.id = purchaseProduct.purchaseId 
     INNER JOIN product ON purchaseProduct.productId = product.id 
     INNER JOIN size ON product.sizeId = size.id 
     INNER JOIN brand ON product.brandId = brand.id 
     WHERE purchase.userId = ?`
-	
 	const values = req.userId
 
 	db.query(purchaseSql, values, function (error, results, fields) {
@@ -514,20 +512,6 @@ app.post('/purchases', authenticateToken, async (req, res) => {
 						error: 'An error occured.',
 					})
 				} else {
-					// const userValues = [results.insertId, req.userId]
-					// purchaseId = results.insertId
-					// await db.query(
-					// 	'INSERT INTO purchaseUser(purchaseId, userId) VALUES (?, ?)',
-					// 	userValues,
-					// 	function (error, results, fields) {
-					// 		if (error) {
-					// 			console.log(error)
-					// 			res.status(500).json({
-					// 				error: 'An error occured.',
-					// 			})
-					// 		}
-					// 	}
-					// )
 					for (let i = 0; i < req.body.products.length; i++) {
 						const productValues = [results.insertId, req.body.products[i]]
 						await db.query(
