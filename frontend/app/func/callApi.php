@@ -8,11 +8,6 @@ function callAPI($method, $url, $data)
             if ($data)
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
             break;
-        case "PUT":
-            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-            if ($data)
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-            break;
         case "PATCH":
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PATCH");
             if ($data)
