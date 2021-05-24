@@ -26,8 +26,6 @@ if ($_SESSION['userType'] && time() > ($_SESSION['lastaccess'] + 3600)) {
     session_destroy();
 
     echo "<script>window.location.href = '/'</script>";
-} else {
-    $_SESSION['lastaccess'] = time();
 }
 
 if (!$_SESSION['cartItems']) {

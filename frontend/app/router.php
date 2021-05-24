@@ -4,8 +4,7 @@ if (strstr($_REQUEST['page'], '../') !== false) {
 } else if (strstr($_REQUEST['page'], 'file://') !== false) {
     echo "Remote file inclusion attempt";
 } else {
-    $pageName = (isset($_REQUEST['page'])) ?
-        $_REQUEST['page'] : 'home';
+    $pageName = (isset($_REQUEST['page'])) ? $_REQUEST['page'] : 'home';
     $desiredPage = "pages/" . $pageName . ".php";
     $menuVisible = true;
     $minimalNav = false;
