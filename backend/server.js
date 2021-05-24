@@ -18,11 +18,8 @@ const validateEmail = (email) => {
 const titleCase = (str) => {
 	let splitStr = str.toLowerCase().split('+')
 	for (var i = 0; i < splitStr.length; i++) {
-		// You do not need to check if i is larger than splitStr length, as your for does that for you
-		// Assign it back to the array
 		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
 	}
-	// Directly return the joined string
 	return splitStr.join(' ')
 }
 
@@ -83,7 +80,6 @@ app.listen(port, () => {
 	console.log(`Wisteria server listening at http://${process.env.DB_HOST}:${port}`)
 })
 
-//registering only if email is unique
 app.post('/signup', async (req, res) => {
 	const plainTextPassword = req.body.password
 	const email = req.body.email
@@ -259,21 +255,6 @@ app.patch('/users/:id', authenticateToken, async (req, res) => {
 
 app.delete('/users/:id', authenticateToken, (req, res) => {
 	const value = req.userId
-	//   db.query(
-	//     "DELETE FROM purchase WHERE id = ?",
-	//     value,
-	//     function (error, results, fields) {
-	//       if (error) {
-	//         console.log(error)
-	res.status(500).json({
-		error: 'An error occured.',
-	})
-	//       }
-	//       res.status(200).json({
-	//         message: "Your account was deleted.",
-	//       });
-	//     }
-	//   );
 
 	db.query('DELETE FROM user WHERE id = ?', value, function (error, results, fields) {
 		if (error) {
@@ -330,8 +311,6 @@ app.get('/products', (req, res) => {
 		sortBy: req.query.sortBy,
 		limit: req.query.limit,
 	}
-
-	console.log('Filters: ' + filters)
 
 	if (filters.gender) {
 		if (filters.gender != 'unisex') {
@@ -456,23 +435,6 @@ app.get('/products/:id', (req, res) => {
 		}
 	)
 })
-
-// app.patch("/products/:id", (req, res) => {
-//   const productId = req.params.id;
-//   db.query(
-//     "UPDATE product SET available = 0 WHERE id = ?",
-//     productId,
-//     function (error, results, fields) {
-//       if (error) {
-//         console.log(error)
-res.status(500).json({
-	error: 'An error occured.',
-})
-//       }
-//       res.status(200).end();
-//     }
-//   );
-// });
 
 app.get('/purchases', authenticateToken, (req, res) => {
 	const purchaseSql = `SELECT purchase.total, purchase.purchaseDate, purchaseProduct.productId, product.name, product.price, size.name, product.fit, product.condition, product.image, brand.name 
