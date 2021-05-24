@@ -5,18 +5,21 @@ function callAPI($method, $url, $data)
     switch ($method) {
         case "POST":
             curl_setopt($curl, CURLOPT_POST, 1);
-            if ($data)
+            if ($data) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            }
             break;
         case "PATCH":
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PATCH");
-            if ($data)
+            if ($data) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            }
             break;
         case "DELETE":
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
-            if ($data)
+            if ($data) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            }
             break;
         default:
             if ($data)
