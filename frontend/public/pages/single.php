@@ -50,7 +50,6 @@ echo " <a class='breadcrumb' href=/?page=products&gender=" . $gender . "&categor
             <h4 style="font-size: 16px;">Size: <?php echo $size; ?></h4>
             <h4 style="font-size: 16px;">Price: <?php echo $price . 'kr'; ?></h4>
             <form action="<?php echo '/?page=single&id=' . $id . '&action=addToCart'; ?>" method="POST">
-                <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
                 <button type="submit">Add to cart</button>
             </form>
         </div>

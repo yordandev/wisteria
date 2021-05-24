@@ -37,7 +37,7 @@ if (isset($_POST['signUpEmail']) && isset($_POST['signUpPassword'])) {
         <input type="email" name="signUpEmail" id="signUpEmail" required placeholder="Email" minlength="5">
         <input type="password" name="signUpPassword" id="signUpPassword" required placeholder="Password" minlength="8" maxlength="32">
         <input type="password" id="signUpConfirmPassword" required placeholder="Confirm Password" minlength="8" maxlength="32">
-        <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
+        <input type="hidden" name="csrfToken" value="<?php echo $csrfToken; ?>" />
         <button type="submit">Join us</button>
     </form>
 </div>
