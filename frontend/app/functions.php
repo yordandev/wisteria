@@ -7,4 +7,3 @@ include('../app/func/addBrand.php');
 include('../app/func/addSize.php');
 include('../app/func/addProduct.php');
 include('../app/func/uploadImage.php');
-include('../app/func/mapPurchaseArray.php');
