@@ -8,7 +8,7 @@ if (!$_SESSION['cartItems']) {
 }
 
 if (!empty($_POST['token'])) {
-    if (hash_equals($_SESSION['token'], $_POST['token'])) {
+    if (hash_equals($_SESSION['csrfToken'], $_POST['token'])) {
         if (isset($_POST['firstName'])) {
             $purchaseError = '';
             $products = array_column($_SESSION['cartItems'], 'id');
@@ -47,7 +47,7 @@ if (!empty($_POST['token'])) {
                 <input type="text" required name="address" placeholder="Address" minlength="5" maxlength="60" pattern="[A-Za-z0-9'\.\-\s\,]">
                 <input type="text" required name="postalCode" placeholder="Postal code" minlength="5" maxlength="5" pattern="[0-9]+">
                 <input type=" text" required name="city" placeholder="City" maxlength="20" pattern="[A-Za-z]+">
-                <input type="hidden" name="token" value="<?php echo $token; ?>" />
+                <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
         </div>
         <div class="paymentInfo">
             <h2>Payment Option</h2>
@@ -60,7 +60,7 @@ if (!empty($_POST['token'])) {
                 <img src="../img/klarna-logo.png">
             </label>
         </div>
-        <input type="hidden" name="token" value="<?php echo $token; ?>" />
+        <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
         <button type="submit">Purchase</button>
     </form>
     <div class="cart">

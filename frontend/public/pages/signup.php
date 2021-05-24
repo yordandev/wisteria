@@ -17,7 +17,7 @@ if (isset($_POST['signUpEmail']) && isset($_POST['signUpPassword'])) {
     if ($signUpResponse['user']) {
         $signUpUser = $signUpResponse['user'];
         session_regenerate_id();
-        $_SESSION['token'] = bin2hex(random_bytes(32));
+        $_SESSION['csrfToken'] = bin2hex(random_bytes(32));
         $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['useragent'] = $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['lastaccess'] = time();
@@ -37,7 +37,7 @@ if (isset($_POST['signUpEmail']) && isset($_POST['signUpPassword'])) {
         <input type="email" name="signUpEmail" id="signUpEmail" required placeholder="Email" minlength="5">
         <input type="password" name="signUpPassword" id="signUpPassword" required placeholder="Password" minlength="8" maxlength="32">
         <input type="password" id="signUpConfirmPassword" required placeholder="Confirm Password" minlength="8" maxlength="32">
-        <input type="hidden" name="token" value="<?php echo $token; ?>" />
+        <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
         <button type="submit">Join us</button>
     </form>
 </div>

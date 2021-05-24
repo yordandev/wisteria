@@ -32,8 +32,8 @@ if (!$_SESSION['cartItems']) {
     $_SESSION['cartItems'] = array();
 }
 
-if ($_SESSION['token']) {
-    $token = $_SESSION['token'];
+if ($_SESSION['csrfToken']) {
+    $csrfToken = $_SESSION['csrfToken'];
 }
 
 if (!$_SESSION['cartTotal']) {

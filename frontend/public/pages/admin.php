@@ -4,7 +4,7 @@ if ($_SESSION['userType'] != 'Admin') {
 }
 
 if (!empty($_POST['token'])) {
-    if (hash_equals($_SESSION['token'], $_POST['token'])) {
+    if (hash_equals($_SESSION['csrfToken'], $_POST['token'])) {
         if (isset($_GET["action"]) && $_GET["action"] == 'addBrand' && isset($_POST["brandName"])) {
             addBrand($_POST["brandName"]);
         }
@@ -30,7 +30,7 @@ if (!empty($_POST['token'])) {
             <div class="content-form">
                 <form action="/?page=admin&action=addBrand" method="POST">
                     <input type="text" name="brandName" id="brandName" required placeholder="Name">
-                    <input type="hidden" name="token" value="<?php echo $token; ?>" />
+                    <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
                     <button type="submit">Add</button>
                 </form>
             </div>
@@ -40,7 +40,7 @@ if (!empty($_POST['token'])) {
             <div class="content-form">
                 <form action="/?page=admin&action=addSize" method="POST">
                     <input type="text" name="sizeName" id="sizeName" required placeholder="Name">
-                    <input type="hidden" name="token" value="<?php echo $token; ?>" />
+                    <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
                     <button type="submit">Add</button>
                 </form>
             </div>
@@ -102,7 +102,7 @@ if (!empty($_POST['token'])) {
                         ?>
                     </select>
                     <input type="file" id="productImage" name="productImage" required accept="image/x-png,image/jpeg">
-                    <input type="hidden" name="token" value="<?php echo $token; ?>" />
+                    <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
                     <button type="submit">Add</button>
                 </form>
             </div>

@@ -4,7 +4,7 @@ if (!$_SESSION['userType']) {
 }
 
 if (!empty($_POST['token'])) {
-    if (hash_equals($_SESSION['token'], $_POST['token'])) {
+    if (hash_equals($_SESSION['csrfToken'], $_POST['token'])) {
         if (isset($_GET["action"]) && $_GET["action"] == 'updatePs' && isset($_POST["updatedPs"])) {
             $passwordData =  array(
                 "password" => htmlspecialchars($_POST['updatedPs'], ENT_QUOTES),
@@ -56,12 +56,12 @@ if (!empty($_POST['token'])) {
             <form action="/?page=account&action=updatePs" method="POST">
                 <input type="password" name="updatedPs" id="signUpPassword" required minlength="8" maxlength="32" placeholder="New password">
                 <input type="password" id="signUpConfirmPassword" required minlength="8" maxlength="32" placeholder="Repeat new password">
-                <input type="hidden" name="token" value="<?php echo $token; ?>" />
+                <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
                 <button type="submit">Update</button>
             </form>
         </div>
         <form action="/?page=account&action=deleteUser" method="POST">
-            <input type="hidden" name="token" value="<?php echo $token; ?>" />
+            <input type="hidden" name="token" value="<?php echo $csrfToken; ?>" />
             <button id="deleteBtn">Delete account</button>
         </form>
     </div>
