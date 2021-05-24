@@ -28,18 +28,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		confirmPassword.onkeyup = validatePassword
 	}
 
-	function dropdownToggle(myDropdown, buttonId) {
-		document.getElementById(buttonId).classList.toggle('active')
-		document.getElementById(myDropdown).classList.toggle('show')
-	}
 
-	function genderFilter() {
-		const gender = document.getElementById('productGender').value
-
-		if (gender == 1) {
-			document.getElementById('productType')[3].disabled = true
-		} else {
-			document.getElementById('productType')[3].disabled = false
-		}
-	}
 })
+
+function dropdownToggle(myDropdown, buttonId) {
+	document.getElementById(buttonId).classList.toggle('active')
+	document.getElementById(myDropdown).classList.toggle('show')
+}
+
+function genderFilter() {
+	const gender = document.getElementById('productGender').value
+
+	if (gender == 1) {
+		document.getElementById('productType')[3].disabled = true
+	} else {
+		document.getElementById('productType')[3].disabled = false
+	}
+}
