@@ -22,8 +22,7 @@ function callAPI($method, $url, $data)
             }
             break;
         default:
-            if ($data)
-                $url = sprintf("%s?%s", $url, http_build_query($data));
+            break;
     }
     // OPTIONS:
     curl_setopt($curl, CURLOPT_URL, $url);

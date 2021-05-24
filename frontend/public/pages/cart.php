@@ -3,10 +3,14 @@
 if (isset($_GET["action"]) && $_GET["action"] == 'removeItem' && isset($_GET["itemId"])) {
     $itemId = $_GET["itemId"];
     $itemIndexInArray = array_search($itemId, array_column($_SESSION['cartItems'], 'id'));
-    $_SESSION['cartTotal'] = $_SESSION['cartTotal'] - $_SESSION['cartItems'][$itemIndexInArray]['price'];
-    unset($_SESSION['cartItems'][$itemIndexInArray]);
-    $_SESSION['cartItems'] = array_values($_SESSION['cartItems']);
-    echo "<script>window.location.href = '?page=cart'</script>";
+    if ($itemIndexInArray === false) {
+        echo "<p style='color: red; margin-bottom: 16px;'>This item is not in your cart.</p>";
+    } else {
+        $_SESSION['cartTotal'] = $_SESSION['cartTotal'] - $_SESSION['cartItems'][$itemIndexInArray]['price'];
+        unset($_SESSION['cartItems'][$itemIndexInArray]);
+        $_SESSION['cartItems'] = array_values($_SESSION['cartItems']);
+        echo "<script>window.location.href = '?page=cart'</script>";
+    }
 };
 
 $total = $_SESSION['cartTotal'];
