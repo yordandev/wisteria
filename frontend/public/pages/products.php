@@ -48,7 +48,7 @@ if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
 
 <div id="filter">
     <div class="dropdown" id="size">
-        <button onclick="myFunction('myDropdown','sizeButton')" class="dropbtn" id="sizeButton">Size</button>
+        <button onclick="dropdownToggle('myDropdown','sizeButton')" class="dropbtn" id="sizeButton">Size</button>
         <div id="myDropdown" class="dropdown-content">
             <?php
             $getData = callAPI('GET', 'http://68.183.14.165:3000/sizes', false);
@@ -66,7 +66,7 @@ if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
         </div>
     </div>
     <div class="dropdown" id="brand">
-        <button onclick="myFunction('myDropdown2','brandButton')" class="dropbtn" id="brandButton">Brand</button>
+        <button onclick="dropdownToggle('myDropdown2','brandButton')" class="dropbtn" id="brandButton">Brand</button>
         <div id="myDropdown2" class="dropdown-content">
             <?php
             $getData = callAPI('GET', 'http://68.183.14.165:3000/brands', false);
@@ -84,7 +84,7 @@ if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
         </div>
     </div>
     <div class="dropdown" id="sorting">
-        <button onclick="myFunction('myDropdown3', 'sortingButton')" class="dropbtn" id="sortingButton">Sort By</button>
+        <button onclick="dropdownToggle('myDropdown3', 'sortingButton')" class="dropbtn" id="sortingButton">Sort By</button>
         <div id="myDropdown3" class="dropdown-content">
             <?php
             //newest links
