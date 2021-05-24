@@ -23,16 +23,17 @@ include('../app/session.php');
 </head>
 
 <body>
-    <div class="<?php switch ($pageName) {
-                    case 'home':
-                        print('grid-container-home');
-                        break;
-                    case 'cart':
-                        print('grid-container-cart');
-                        break;
-                    default:
-                        print('grid-container');
-                } ?>">
+    <div class="<?php $pageName == 'home' ? print('grid-container-home') : print('grid-container') ?>">
+        <!-- <div class="<?php switch ($pageName) {
+                                case 'home':
+                                    print('grid-container-home');
+                                    break;
+                                case 'cart':
+                                    print('grid-container-cart');
+                                    break;
+                                default:
+                                    print('grid-container');
+                            } ?>"></div> -->
         <?php
         include('./components/header/header.php')
         ?>
