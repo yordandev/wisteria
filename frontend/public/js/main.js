@@ -27,8 +27,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		password.onchange = validatePassword
 		confirmPassword.onkeyup = validatePassword
 	}
-
-
 })
 
 function dropdownToggle(myDropdown, buttonId) {
