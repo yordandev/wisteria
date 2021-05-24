@@ -44,7 +44,7 @@ if (!empty($_POST['token'])) {
             <h1>Shipping Information</h2>
                 <input type="text" required name="firstName" placeholder="First name" maxlength="15" pattern="[A-Za-z]+">
                 <input type="text" required name="lastName" placeholder="Last name" maxlength="20" pattern="[A-Za-z]+">
-                <input type="text" required name="address" placeholder="Address" minlength="5" maxlength="60" pattern="^\d+\s[A-z]+\s[A-z]+">
+                <input type="text" required name="address" placeholder="Address" minlength="5" maxlength="60" pattern="[A-Za-z0-9'\.\-\s\,]">
                 <input type="text" required name="postalCode" placeholder="Postal code" minlength="5" maxlength="5" pattern="[0-9]+">
                 <input type=" text" required name="city" placeholder="City" maxlength="20" pattern="[A-Za-z]+">
                 <input type="hidden" name="token" value="<?php echo $token; ?>" />
