@@ -56,8 +56,8 @@ if (!empty($_POST['token'])) {
                     <select name="genderId" id="productGender" required onchange="genderFilter()">
                         <option value="" disabled selected>Gender</option>
                         <?php
-                        $get_data = callAPI('GET', 'http://68.183.14.165:3000/genders', false);
-                        $response = json_decode($get_data, true);
+                        $getData = callAPI('GET', 'http://68.183.14.165:3000/genders', false);
+                        $response = json_decode($getData, true);
                         for ($i = 0; $i < count($response); $i++) {
                             $id = $response[$i]['id'];
                             $value = $response[$i]['name'];
@@ -68,8 +68,8 @@ if (!empty($_POST['token'])) {
                     <select name="typeId" id="productType" required>
                         <option value="" disabled selected>Type</option>
                         <?php
-                        $get_data = callAPI('GET', 'http://68.183.14.165:3000/types', false);
-                        $response = json_decode($get_data, true);
+                        $getData = callAPI('GET', 'http://68.183.14.165:3000/types', false);
+                        $response = json_decode($getData, true);
                         for ($i = 0; $i < count($response); $i++) {
                             $id = $response[$i]['id'];
                             $value = $response[$i]['name'];
@@ -80,8 +80,8 @@ if (!empty($_POST['token'])) {
                     <select name="brandId" id="productBrand" required>
                         <option value="" disabled selected>Brand</option>
                         <?php
-                        $get_data = callAPI('GET', 'http://68.183.14.165:3000/brands', false);
-                        $response = json_decode($get_data, true);
+                        $getData = callAPI('GET', 'http://68.183.14.165:3000/brands', false);
+                        $response = json_decode($getData, true);
                         for ($i = 0; $i < count($response); $i++) {
                             $id = $response[$i]['id'];
                             $value = $response[$i]['name'];
@@ -92,8 +92,8 @@ if (!empty($_POST['token'])) {
                     <select name="sizeId" id="productSize" required>
                         <option value="" disabled selected>Size</option>
                         <?php
-                        $get_data = callAPI('GET', 'http://68.183.14.165:3000/sizes', false);
-                        $response = json_decode($get_data, true);
+                        $getData = callAPI('GET', 'http://68.183.14.165:3000/sizes', false);
+                        $response = json_decode($getData, true);
                         for ($i = 0; $i < count($response); $i++) {
                             $id = $response[$i]['id'];
                             $value = $response[$i]['name'];
@@ -108,15 +108,3 @@ if (!empty($_POST['token'])) {
             </div>
         </li>
 </div>
-
-<script>
-    function genderFilter() {
-        const gender = document.getElementById("productGender").value;
-
-        if (gender == 1) {
-            document.getElementById("productType")[3].disabled = true;
-        } else {
-            document.getElementById("productType")[3].disabled = false;
-        }
-    }
-</script>

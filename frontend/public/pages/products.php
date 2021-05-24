@@ -36,28 +36,28 @@ if ($_SESSION['filters']['sortBy']) {
     $newUrl = $newUrl . "&sortBy=" . $_SESSION['filters']['sortBy'];
 }
 
-$get_data = callAPI('GET', $newUrl, false);
-$productsResponse = json_decode($get_data, true);
+$getData = callAPI('GET', $newUrl, false);
+$productsResponse = json_decode($getData, true);
 
 echo "<h1>" . ucwords($gender)  . " " . ucwords($category) . "</h1>";
+
 if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
     echo " <a id='filterLink' href=/?page=products&gender=" . $gender . "&category=" . $category . "&sortBy=DESC>Clear all filters</a>";
 }
 ?>
+
 <div id="filter">
     <div class="dropdown" id="size">
         <button onclick="myFunction('myDropdown','sizeButton')" class="dropbtn" id="sizeButton">Size</button>
         <div id="myDropdown" class="dropdown-content">
             <?php
-            $get_data = callAPI('GET', 'http://68.183.14.165:3000/sizes', false);
-            $response = json_decode($get_data, true);
+            $getData = callAPI('GET', 'http://68.183.14.165:3000/sizes', false);
+            $response = json_decode($getData, true);
             for ($i = 0; $i < count($response); $i++) {
                 $lower = strtolower($response[$i]['name']);
                 $value = $response[$i]['name'];
-                // echo "<a href=" . $currentUrl . "&size="  . $lower . " onclick='clickAndDisable(this)'>" . $value . "</a>";
-                $sessionBrand = $_SESSION['filters']['brand'];
                 if ($_SESSION['filters']['brand']) {
-                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . urlencode($lower) . "&brand="  . $sessionBrand . "&sortBy="  . $sortBy . ">" . $value . "</a>";
+                    echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size=" . urlencode($lower) . "&brand="  . $_SESSION['filters']['brand'] . "&sortBy="  . $sortBy . ">" . $value . "</a>";
                 } else {
                     echo "<a href=" . "/?page=products&gender=" . $gender . "&category=" . $category . "&size="  . urlencode($lower) . "&sortBy="  . $sortBy . ">" . $value . "</a>";
                 }
@@ -69,8 +69,8 @@ if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
         <button onclick="myFunction('myDropdown2','brandButton')" class="dropbtn" id="brandButton">Brand</button>
         <div id="myDropdown2" class="dropdown-content">
             <?php
-            $get_data = callAPI('GET', 'http://68.183.14.165:3000/brands', false);
-            $response = json_decode($get_data, true);
+            $getData = callAPI('GET', 'http://68.183.14.165:3000/brands', false);
+            $response = json_decode($getData, true);
             for ($i = 0; $i < count($response); $i++) {
                 $lower = strtolower($response[$i]['name']);
                 $value = $response[$i]['name'];
@@ -104,11 +104,3 @@ if ($_SESSION['filters']['brand'] || $_SESSION['filters']['size']) {
     }
     ?>
 </div>
-<script>
-    /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-    function myFunction(myDropdown, buttonId) {
-        document.getElementById(buttonId).classList.toggle("active");
-        document.getElementById(myDropdown).classList.toggle("show");
-    }
-</script>

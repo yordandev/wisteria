@@ -1,6 +1,6 @@
 <?php
-$get_data = callAPI('GET', 'http://68.183.14.165:3000/products?limit=8&sortBy=DESC', false);
-$response = json_decode($get_data, true);
+$getData = callAPI('GET', 'http://68.183.14.165:3000/products?limit=8&sortBy=DESC', false);
+$response = json_decode($getData, true);
 
 if (!$response[0]['id']) {
     echo "<p style='color: red; margin-bottom: 48px; text-align: center;'>No products are available at the moment.</p>";
